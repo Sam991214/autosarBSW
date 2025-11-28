@@ -43,8 +43,59 @@ extern "C"
 # include "Rte_CtLedTask_Type.h"
 # include "Rte_DataHandleType.h"
 
+# ifndef RTE_CORE
+
+#  include "Com.h"
+
+
+# endif /* !defined(RTE_CORE) */
+
 
 # ifndef RTE_CORE
+/**********************************************************************************************************************
+ * Init Values for unqueued S/R communication (primitive types only)
+ *********************************************************************************************************************/
+
+#  define Rte_InitValue_lwt_Lampcnt_u8_lwt_Signal (0U)
+#  define Rte_InitValue_lwt_RearInterLight_Bool_lwtSignal (FALSE)
+#  define Rte_InitValue_lwt_develop_FrongLight_bool_signal_lwt_develop (FALSE)
+#  define Rte_InitValue_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop (0U)
+#  define Rte_InitValue_lwt_develop_RearRightWinPos_u8_signal_lwt_develop (0U)
+# endif
+
+
+# define RTE_START_SEC_CODE
+# include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+/**********************************************************************************************************************
+ * API prototypes
+ *********************************************************************************************************************/
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CtLedTask_lwt_Lampcnt_u8_lwt_Signal(uint8 data); /* PRQA S 0850 */ /* MD_MSR_19.8 */
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CtLedTask_lwt_RearInterLight_Bool_lwtSignal(boolean data); /* PRQA S 0850 */ /* MD_MSR_19.8 */
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CtLedTask_lwt_develop_FrongLight_bool_signal_lwt_develop(boolean data); /* PRQA S 0850 */ /* MD_MSR_19.8 */
+
+# define RTE_STOP_SEC_CODE
+# include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+
+# ifndef RTE_CORE
+
+/**********************************************************************************************************************
+ * Rte_Read_<p>_<d> (explicit S/R communication with isQueued = false)
+ *********************************************************************************************************************/
+#  define Rte_Read_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop Rte_Read_CtLedTask_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop
+#  define Rte_Read_CtLedTask_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop(data) (Com_ReceiveSignal(ComConf_ComSignal_lwt_sig_recv2_RearLeftWinPos_olwt_msg_recv2_oCAN00_1d859839_Rx, (data))) /* PRQA S 3453 */ /* MD_MSR_19.7 */
+#  define Rte_Read_lwt_develop_RearRightWinPos_u8_signal_lwt_develop Rte_Read_CtLedTask_lwt_develop_RearRightWinPos_u8_signal_lwt_develop
+#  define Rte_Read_CtLedTask_lwt_develop_RearRightWinPos_u8_signal_lwt_develop(data) (Com_ReceiveSignal(ComConf_ComSignal_lwt_sig_recv2_RearRightWinPos_olwt_msg_recv2_oCAN00_b5508b86_Rx, (data))) /* PRQA S 3453 */ /* MD_MSR_19.7 */
+
+
+/**********************************************************************************************************************
+ * Rte_Write_<p>_<d> (explicit S/R communication with isQueued = false)
+ *********************************************************************************************************************/
+#  define Rte_Write_lwt_Lampcnt_u8_lwt_Signal Rte_Write_CtLedTask_lwt_Lampcnt_u8_lwt_Signal
+#  define Rte_Write_lwt_RearInterLight_Bool_lwtSignal Rte_Write_CtLedTask_lwt_RearInterLight_Bool_lwtSignal
+#  define Rte_Write_lwt_develop_FrongLight_bool_signal_lwt_develop Rte_Write_CtLedTask_lwt_develop_FrongLight_bool_signal_lwt_develop
+
 
 /**********************************************************************************************************************
  * Rte_Call_<p>_<o> (unmapped) for synchronous C/S communication

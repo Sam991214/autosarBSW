@@ -52,6 +52,11 @@
  *  Rte_CallHook_DemSatellite_0_CBReadData_OccurrenceCounter_OccurenceCounter_ReadData_Start
  *  Rte_CallHook_DemSatellite_0_CBReadData_OdometerValue_OdometerValue_ReadData_Return
  *  Rte_CallHook_DemSatellite_0_CBReadData_OdometerValue_OdometerValue_ReadData_Start
+ *  Rte_ComHook_lwt_sig_recv2_RearLeftWinPos_olwt_msg_recv2_oCAN00_1d859839_Rx_SigRx
+ *  Rte_ComHook_lwt_sig_recv2_RearRightWinPos_olwt_msg_recv2_oCAN00_b5508b86_Rx_SigRx
+ *  Rte_ComHook_lwt_sig_trans2_FrongLight_olwt_msg_transmit2_oCAN00_65e2995e_Tx_SigTx
+ *  Rte_ComHook_sig_LampCnt_omsg_MyECU_Lamp_oCAN00_f37e68ea_Tx_SigTx
+ *  Rte_ComHook_sig_RearInteriorLight_omsg_Transmit_oCAN00_49a633c1_Tx_SigTx
  *  Rte_ReadHook_BswM_Request_ESH_PostRunRequest_0_requestedMode_Return
  *  Rte_ReadHook_BswM_Request_ESH_PostRunRequest_0_requestedMode_Start
  *  Rte_ReadHook_BswM_Request_ESH_PostRunRequest_1_requestedMode_Return
@@ -60,6 +65,10 @@
  *  Rte_ReadHook_BswM_Request_ESH_RunRequest_0_requestedMode_Start
  *  Rte_ReadHook_BswM_Request_ESH_RunRequest_1_requestedMode_Return
  *  Rte_ReadHook_BswM_Request_ESH_RunRequest_1_requestedMode_Start
+ *  Rte_ReadHook_CtLedTask_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop_Return
+ *  Rte_ReadHook_CtLedTask_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop_Start
+ *  Rte_ReadHook_CtLedTask_lwt_develop_RearRightWinPos_u8_signal_lwt_develop_Return
+ *  Rte_ReadHook_CtLedTask_lwt_develop_RearRightWinPos_u8_signal_lwt_develop_Start
  *  Rte_Runnable_BswM_BswM_MainFunction_Return
  *  Rte_Runnable_BswM_BswM_MainFunction_Start
  *  Rte_Runnable_CddSbc_Sbc_Test_Runnable_Return
@@ -214,6 +223,12 @@
  *  Rte_Task_Dispatch
  *  Rte_Task_WaitEvent
  *  Rte_Task_WaitEventRet
+ *  Rte_WriteHook_CtLedTask_lwt_Lampcnt_u8_lwt_Signal_Return
+ *  Rte_WriteHook_CtLedTask_lwt_Lampcnt_u8_lwt_Signal_Start
+ *  Rte_WriteHook_CtLedTask_lwt_RearInterLight_Bool_lwtSignal_Return
+ *  Rte_WriteHook_CtLedTask_lwt_RearInterLight_Bool_lwtSignal_Start
+ *  Rte_WriteHook_CtLedTask_lwt_develop_FrongLight_bool_signal_lwt_develop_Return
+ *  Rte_WriteHook_CtLedTask_lwt_develop_FrongLight_bool_signal_lwt_develop_Start
  *  SchM_EnterHook_BswM_BSWM_EXCLUSIVE_AREA_0_Return
  *  SchM_EnterHook_BswM_BSWM_EXCLUSIVE_AREA_0_Start
  *  SchM_EnterHook_CanIf_CANIF_EXCLUSIVE_AREA_0_Return

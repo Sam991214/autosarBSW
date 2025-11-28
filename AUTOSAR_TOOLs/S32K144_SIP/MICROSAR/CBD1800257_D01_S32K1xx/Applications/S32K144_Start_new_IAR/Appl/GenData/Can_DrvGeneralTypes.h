@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Can_DrvGeneralTypes.h
- *   Generation Time: 2021-04-09 15:46:07
+ *   Generation Time: 2025-11-09 02:11:02
  *           Project: S32K144_Start - Version 1.0
  *          Delivery: CBD1800257_D01
  *      Tool Version: DaVinci Configurator  5.18.37 SP1
@@ -37,7 +37,7 @@
  ----------------------------------------------------------------------------- */
 
 /* CAN416, CAN065_Conf */
-typedef VAR(uint16, TYPEDEF) Can_IdType;             /* PRQA S 0850 */ /* MD_MSR_19.8 */
+typedef VAR(uint32, TYPEDEF) Can_IdType;             /* PRQA S 0850 */ /* MD_MSR_19.8 */
 
 /* CAN429 */
 typedef VAR(uint8, TYPEDEF) Can_HwHandleType;                 /* PRQA S 0850 */ /* MD_MSR_19.8 */

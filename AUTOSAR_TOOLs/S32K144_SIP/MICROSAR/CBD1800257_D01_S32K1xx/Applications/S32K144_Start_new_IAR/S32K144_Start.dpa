@@ -127,8 +127,8 @@
         <OwnFolderForEachSplitter>false</OwnFolderForEachSplitter>
     </EcucSplitter>
     <Display LastVersion="5.18.37 SP1">
-        <FileSet Id="" CS="e1707a37">
-            <File Order="0" EcuInstance="MyECU" Hash="653b68a91da683311cb88bfa4f142c36" FileCategory="legacy_communication_data">$(DpaProjectFolder)\Inputfiles\CAN.dbc</File>
+        <FileSet Id="" CS="77f9a04f">
+            <File Order="1" EcuInstance="MyECU" Hash="f4695ac3277faceb776dc773d4e99d33" FileCategory="legacy_communication_data">D:\study\autosar_bsw\AUTOSAR_TOOLs\S32K144_SIP\MICROSAR\CBD1800257_D01_S32K1xx\CAN.dbc</File>
             <Diagnostic>
                 <Description Hash="e0ae908913d93caf691f8c3440b9d7bb">$(DpaProjectFolder)\Inputfiles\ForTraining.cdd</Description>
                 <Ecu>New_ECU_1</Ecu>

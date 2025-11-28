@@ -163,6 +163,22 @@ LedCnt++;
 
 LedState ^= 0x01;
 
+static  int ledcnt = 0;
+static  unsigned char lwt_develop_RearLeftWinPos = 0;
+static  unsigned char lwt_develop_RearRightWinPos = 0;
+
+ ledcnt++;
+ Rte_Write_lwt_Lampcnt_u8_lwt_Signal(ledcnt);
+ Rte_Write_lwt_RearInterLight_Bool_lwtSignal(1);
+
+ Rte_Write_lwt_develop_FrongLight_bool_signal_lwt_develop(1);
+ Rte_Read_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop(&lwt_develop_RearLeftWinPos);
+ Rte_Read_lwt_develop_RearRightWinPos_u8_signal_lwt_develop(&lwt_develop_RearRightWinPos);
+
+  
+ 
+ 
+
 
 
  Dio_WriteChannel(112,LedState);

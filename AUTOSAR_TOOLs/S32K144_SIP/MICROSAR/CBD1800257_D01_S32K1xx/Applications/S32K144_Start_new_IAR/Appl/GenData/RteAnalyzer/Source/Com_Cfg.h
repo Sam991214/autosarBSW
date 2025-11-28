@@ -23,5 +23,15 @@
 # define _COM_CFG_H_
 
 
+# define ComConf_ComSignal_lwt_sig_recv2_RearLeftWinPos_olwt_msg_recv2_oCAN00_1d859839_Rx 0
+
+# define ComConf_ComSignal_lwt_sig_recv2_RearRightWinPos_olwt_msg_recv2_oCAN00_b5508b86_Rx 1
+
+# define ComConf_ComSignal_lwt_sig_trans2_FrongLight_olwt_msg_transmit2_oCAN00_65e2995e_Tx 2
+
+# define ComConf_ComSignal_sig_LampCnt_omsg_MyECU_Lamp_oCAN00_f37e68ea_Tx 3
+
+# define ComConf_ComSignal_sig_RearInteriorLight_omsg_Transmit_oCAN00_49a633c1_Tx 4
+
 
 #endif /* _COM_CFG_H_ */

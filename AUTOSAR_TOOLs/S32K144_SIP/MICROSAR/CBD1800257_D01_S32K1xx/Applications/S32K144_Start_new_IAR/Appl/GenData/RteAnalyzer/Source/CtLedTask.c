@@ -81,6 +81,7 @@ static void CtLedTask_TestDefines(void);
  *
  * Primitive Types:
  * ================
+ * boolean: Boolean (standard type)
  * uint8: Integer in interval [0...255] (standard type)
  *
  * Enumeration Types:
@@ -240,6 +241,23 @@ FUNC(void, CtLedTask_CODE) CtLedTask_InitRunnable(void) /* PRQA S 0850 */ /* MD_
  * Executed if at least one of the following trigger conditions occurred:
  *   - triggered on TimingEvent every 300ms
  *
+ **********************************************************************************************************************
+ *
+ * Input Interfaces:
+ * =================
+ *   Explicit S/R API:
+ *   -----------------
+ *   Std_ReturnType Rte_Read_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop(uint8 *data)
+ *   Std_ReturnType Rte_Read_lwt_develop_RearRightWinPos_u8_signal_lwt_develop(uint8 *data)
+ *
+ * Output Interfaces:
+ * ==================
+ *   Explicit S/R API:
+ *   -----------------
+ *   Std_ReturnType Rte_Write_lwt_Lampcnt_u8_lwt_Signal(uint8 data)
+ *   Std_ReturnType Rte_Write_lwt_RearInterLight_Bool_lwtSignal(boolean data)
+ *   Std_ReturnType Rte_Write_lwt_develop_FrongLight_bool_signal_lwt_develop(boolean data)
+ *
  *********************************************************************************************************************/
 /**********************************************************************************************************************
  * DO NOT CHANGE THIS COMMENT!           << Start of documentation area >>                  DO NOT CHANGE THIS COMMENT!
@@ -257,6 +275,80 @@ FUNC(void, CtLedTask_CODE) LedRunnable(void) /* PRQA S 0850 */ /* MD_MSR_19.8 */
  * DO NOT CHANGE THIS COMMENT!           << Start of runnable implementation >>             DO NOT CHANGE THIS COMMENT!
  * Symbol: LedRunnable
  *********************************************************************************************************************/
+
+  Std_ReturnType fct_status;
+  boolean fct_error = 0;
+
+  uint8 Read_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop;
+  uint8 Read_lwt_develop_RearRightWinPos_u8_signal_lwt_develop;
+
+  /*************************************************
+  * Direct Function Accesses
+  *************************************************/
+
+  fct_status = TSC_CtLedTask_Rte_Read_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop(&Read_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop);
+  switch (fct_status)
+  {
+    case RTE_E_OK:
+      fct_error = 0;
+      break;
+    case RTE_E_UNCONNECTED:
+      fct_error = 1;
+      break;
+    case RTE_E_NEVER_RECEIVED:
+      fct_error = 1;
+      break;
+    case RTE_E_INVALID:
+      fct_error = 1;
+      break;
+    case RTE_E_MAX_AGE_EXCEEDED:
+      fct_error = 1;
+      break;
+  }
+
+  fct_status = TSC_CtLedTask_Rte_Read_lwt_develop_RearRightWinPos_u8_signal_lwt_develop(&Read_lwt_develop_RearRightWinPos_u8_signal_lwt_develop);
+  switch (fct_status)
+  {
+    case RTE_E_OK:
+      fct_error = 0;
+      break;
+    case RTE_E_UNCONNECTED:
+      fct_error = 1;
+      break;
+    case RTE_E_NEVER_RECEIVED:
+      fct_error = 1;
+      break;
+    case RTE_E_INVALID:
+      fct_error = 1;
+      break;
+    case RTE_E_MAX_AGE_EXCEEDED:
+      fct_error = 1;
+      break;
+  }
+
+  fct_status = TSC_CtLedTask_Rte_Write_lwt_Lampcnt_u8_lwt_Signal(Rte_InitValue_lwt_Lampcnt_u8_lwt_Signal);
+  switch (fct_status)
+  {
+    case RTE_E_OK:
+      fct_error = 0;
+      break;
+  }
+
+  fct_status = TSC_CtLedTask_Rte_Write_lwt_RearInterLight_Bool_lwtSignal(Rte_InitValue_lwt_RearInterLight_Bool_lwtSignal);
+  switch (fct_status)
+  {
+    case RTE_E_OK:
+      fct_error = 0;
+      break;
+  }
+
+  fct_status = TSC_CtLedTask_Rte_Write_lwt_develop_FrongLight_bool_signal_lwt_develop(Rte_InitValue_lwt_develop_FrongLight_bool_signal_lwt_develop);
+  switch (fct_status)
+  {
+    case RTE_E_OK:
+      fct_error = 0;
+      break;
+  }
 
 
 /**********************************************************************************************************************

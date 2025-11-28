@@ -59,6 +59,13 @@
 
 #include "Rte_Hook.h"
 
+#include "Com.h"
+#if defined(IL_ASRCOM_VERSION)
+# define RTE_USE_COM_TXSIGNAL_RDACCESS
+#endif
+
+#include "Rte_Cbk.h"
+
 /* AUTOSAR 3.x compatibility */
 #if !defined (RTE_LOCAL)
 # define RTE_LOCAL static
@@ -244,6 +251,38 @@ FUNC(void, RTE_CODE) SchM_Deinit(void)
 FUNC(void, RTE_CODE) Rte_InitMemory(void) /* PRQA S 0850 */ /* MD_MSR_19.8 */
 {
 }
+
+
+/**********************************************************************************************************************
+ * Internal/External Tx connections
+ *********************************************************************************************************************/
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CtLedTask_lwt_Lampcnt_u8_lwt_Signal(uint8 data) /* PRQA S 0850, 1505 */ /* MD_MSR_19.8, MD_MSR_8.10 */
+{
+  Std_ReturnType ret = RTE_E_OK;
+
+  ret |= Com_SendSignal(ComConf_ComSignal_sig_LampCnt_omsg_MyECU_Lamp_oCAN00_f37e68ea_Tx, (&data)); /* PRQA S 0850 */ /* MD_MSR_19.8 */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CtLedTask_lwt_RearInterLight_Bool_lwtSignal(boolean data) /* PRQA S 0850, 1505 */ /* MD_MSR_19.8, MD_MSR_8.10 */
+{
+  Std_ReturnType ret = RTE_E_OK;
+
+  ret |= Com_SendSignal(ComConf_ComSignal_sig_RearInteriorLight_omsg_Transmit_oCAN00_49a633c1_Tx, (&data)); /* PRQA S 0850 */ /* MD_MSR_19.8 */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CtLedTask_lwt_develop_FrongLight_bool_signal_lwt_develop(boolean data) /* PRQA S 0850, 1505 */ /* MD_MSR_19.8, MD_MSR_8.10 */
+{
+  Std_ReturnType ret = RTE_E_OK;
+
+  ret |= Com_SendSignal(ComConf_ComSignal_lwt_sig_trans2_FrongLight_olwt_msg_transmit2_oCAN00_65e2995e_Tx, (&data)); /* PRQA S 0850 */ /* MD_MSR_19.8 */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
 
 
 /**********************************************************************************************************************
