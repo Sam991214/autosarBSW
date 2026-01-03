@@ -2792,6 +2792,12 @@
             <file>
                 <name>$PROJ_DIR$\Appl\Source\OsAppTask.c</name>
             </file>
+            <file>
+                <name>$PROJ_DIR$\Appl\Source\Test_SWC.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\Appl\Source\Test_SWC2.c</name>
+            </file>
         </group>
         <file>
             <name>$PROJ_DIR$\Appl\BrsAsrMain.c</name>

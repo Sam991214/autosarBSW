@@ -40,6 +40,8 @@
 #include "Rte_Det.h"
 #include "Rte_EcuM.h"
 #include "Rte_Os_OsCore0_swc.h"
+#include "Rte_Test_SWC.h"
+#include "Rte_Test_SWC2.h"
 #include "SchM_Adc.h"
 #include "SchM_BswM.h"
 #include "SchM_Can.h"
@@ -109,6 +111,42 @@
 
 
 /**********************************************************************************************************************
+ * Buffers for unqueued S/R
+ *********************************************************************************************************************/
+
+#define RTE_START_SEC_VAR_NOINIT_UNSPECIFIED
+#include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+VAR(uint8, RTE_VAR_NOINIT) Rte_Test2_SWC_lwt_Test_Swc2_Write_u8_Signal_lwt; /* PRQA S 0850, 3408, 1504 */ /* MD_MSR_19.8, MD_Rte_3408, MD_MSR_8.10 */
+VAR(uint8, RTE_VAR_NOINIT) Rte_Test_SWC_lwt_Test_Swc_Write_u8_Signal_lwt; /* PRQA S 0850, 3408, 1504 */ /* MD_MSR_19.8, MD_Rte_3408, MD_MSR_8.10 */
+
+#define RTE_STOP_SEC_VAR_NOINIT_UNSPECIFIED
+#include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+
+/**********************************************************************************************************************
+ * Constants
+ *********************************************************************************************************************/
+
+#define RTE_START_SEC_CONST_UNSPECIFIED
+#include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+/* PRQA S 0850 L1 */ /* MD_MSR_19.8 */
+CONST(Test_array_U8_lwt, RTE_CONST) Rte_C_Test_array_U8_lwt_0 = {
+  0U
+};
+/* PRQA L:L1 */
+/* PRQA S 0850 L1 */ /* MD_MSR_19.8 */
+CONST(Voltage_lwt_struct_record, RTE_CONST) Rte_C_Voltage_lwt_struct_record_0 = {
+  0U, 0U
+};
+/* PRQA L:L1 */
+
+#define RTE_STOP_SEC_CONST_UNSPECIFIED
+#include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+
+/**********************************************************************************************************************
  * TxAck/ModeSwitchAck Flags
  *********************************************************************************************************************/
 
@@ -128,6 +166,8 @@ VAR(Rte_AckFlagsType, RTE_VAR_NOINIT) Rte_AckFlags; /* PRQA S 0850 */ /* MD_MSR_
 #include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
 
 FUNC(void, RTE_CODE) Rte_MemClr(P2VAR(void, AUTOMATIC, RTE_VAR_NOINIT) ptr, uint32_least num); /* PRQA S 0850, 3447, 3408 */ /* MD_MSR_19.8, MD_Rte_3447, MD_Rte_3408 */
+FUNC(void, RTE_CODE) Rte_MemCpy(P2VAR(void, AUTOMATIC, RTE_APPL_VAR) destination, P2CONST(void, AUTOMATIC, RTE_APPL_DATA) source, uint32_least num); /* PRQA S 0850, 1505, 3447, 3408 */ /* MD_MSR_19.8, MD_MSR_8.10, MD_Rte_3447, MD_Rte_3408 */
+FUNC(void, RTE_CODE) Rte_MemCpy32(P2VAR(void, AUTOMATIC, RTE_APPL_VAR) destination, P2CONST(void, AUTOMATIC, RTE_APPL_DATA) source, uint32_least num); /* PRQA S 0850, 1505, 3447, 3408 */ /* MD_MSR_19.8, MD_MSR_8.10, MD_Rte_3447, MD_Rte_3408 */
 
 #define RTE_STOP_SEC_CODE
 #include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
@@ -175,6 +215,7 @@ VAR(BswM_ESH_Mode, RTE_VAR_NOINIT) Rte_ModeMachine_BswM_Switch_ESH_ModeSwitch_Bs
 #define RTE_CONST_MSEC_SystemTimer_20 (20UL)
 #define RTE_CONST_MSEC_SystemTimer_300 (300UL)
 #define RTE_CONST_MSEC_SystemTimer_5 (5UL)
+#define RTE_CONST_MSEC_SystemTimer_50 (50UL)
 
 
 /**********************************************************************************************************************
@@ -190,6 +231,79 @@ VAR(BswM_ESH_Mode, RTE_VAR_NOINIT) Rte_ModeMachine_BswM_Switch_ESH_ModeSwitch_Bs
 
 #define RTE_START_SEC_CODE
 #include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+FUNC(void, RTE_CODE) Rte_MemCpy(P2VAR(void, AUTOMATIC, RTE_APPL_VAR) destination, P2CONST(void, AUTOMATIC, RTE_APPL_DATA) source, uint32_least num) /* PRQA S 3408, 1505 */ /* MD_Rte_3408, MD_MSR_8.10 */
+{
+  P2CONST(uint8, AUTOMATIC, RTE_APPL_DATA) src = (P2CONST(uint8, AUTOMATIC, RTE_APPL_DATA)) source;
+  P2VAR(uint8, AUTOMATIC, RTE_APPL_VAR) dst = (P2VAR(uint8, AUTOMATIC, RTE_APPL_VAR)) destination;
+  uint32_least i;
+  for (i = 0; i < num; i++)
+  {
+    dst[i] = src[i];
+  }
+}
+
+#define RTE_MEMCPY32ALIGN (sizeof(uint32) - 1)
+
+FUNC(void, RTE_CODE) Rte_MemCpy32(P2VAR(void, AUTOMATIC, RTE_APPL_VAR) destination, P2CONST(void, AUTOMATIC, RTE_APPL_DATA) source, uint32_least num)
+{
+  P2CONST(uint32, AUTOMATIC, RTE_APPL_DATA) asrc = (P2CONST(uint32, AUTOMATIC, RTE_APPL_DATA)) source;
+  P2VAR(uint32, AUTOMATIC, RTE_APPL_VAR) adst = (P2VAR(uint32, AUTOMATIC, RTE_APPL_VAR)) destination;
+  P2CONST(uint8, AUTOMATIC, RTE_APPL_DATA) src = (P2CONST(uint8, AUTOMATIC, RTE_APPL_DATA)) source;
+  P2VAR(uint8, AUTOMATIC, RTE_APPL_VAR) dst = (P2VAR(uint8, AUTOMATIC, RTE_APPL_VAR)) destination;
+  uint32_least i = 0;
+
+  if (num >= 16)
+  {
+    if (((((uint32)src) & RTE_MEMCPY32ALIGN) == 0) && ((((uint32)dst) & RTE_MEMCPY32ALIGN) == 0)) /* PRQA S 0306 */ /* MD_Rte_0306 */
+    {
+      uint32_least asize = num / sizeof(uint32);
+      uint32_least rem = num & RTE_MEMCPY32ALIGN;
+      for (i = 0; i < (asize - 3); i += 4)
+      {
+        adst[i] = asrc[i];
+        adst[i+1] = asrc[i+1];
+        adst[i+2] = asrc[i+2];
+        adst[i+3] = asrc[i+3];
+      }
+
+      while (i < asize)
+      {
+        adst[i] = asrc[i];
+        ++i;
+      }
+      i = num - rem;
+    }
+    else
+    {
+      for (i = 0; (i + 15) < num; i += 16)
+      {
+        dst[i] = src[i];
+        dst[i+1] = src[i+1];
+        dst[i+2] = src[i+2];
+        dst[i+3] = src[i+3];
+        dst[i+4] = src[i+4];
+        dst[i+5] = src[i+5];
+        dst[i+6] = src[i+6];
+        dst[i+7] = src[i+7];
+        dst[i+8] = src[i+8];
+        dst[i+9] = src[i+9];
+        dst[i+10] = src[i+10];
+        dst[i+11] = src[i+11];
+        dst[i+12] = src[i+12];
+        dst[i+13] = src[i+13];
+        dst[i+14] = src[i+14];
+        dst[i+15] = src[i+15];
+      }
+    }
+
+  }
+  while (i < num)
+  {
+    dst[i] = src[i];
+    ++i;
+  }
+}
 
 FUNC(void, RTE_CODE) Rte_MemClr(P2VAR(void, AUTOMATIC, RTE_VAR_NOINIT) ptr, uint32_least num)
 {
@@ -215,6 +329,10 @@ FUNC(void, RTE_CODE) SchM_Init(void)
 
 FUNC(Std_ReturnType, RTE_CODE) Rte_Start(void) /* PRQA S 0850 */ /* MD_MSR_19.8 */
 {
+  /* set default values for internal data */
+  Rte_Test2_SWC_lwt_Test_Swc2_Write_u8_Signal_lwt = 0U;
+  Rte_Test_SWC_lwt_Test_Swc_Write_u8_Signal_lwt = 0U;
+
   /* reset Tx Ack Flags */
   Rte_AckFlagsInit();
   Rte_AckFlags.Rte_ModeSwitchAck_BswM_Switch_ESH_ModeSwitch_BswM_MDGP_ESH_Mode_Ack = 1;
@@ -229,6 +347,7 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Start(void) /* PRQA S 0850 */ /* MD_MSR_19.8 
   /* activate the alarms used for TimingEvents */
   (void)SetRelAlarm(Rte_Al_TE_Cdd_SBC_UJA1169_Sbc_Test_Runnable, RTE_MSEC_SystemTimer(0) + (TickType)1, RTE_MSEC_SystemTimer(100)); /* PRQA S 3417 */ /* MD_Rte_Os */
   (void)SetRelAlarm(Rte_Al_TE_CpLedTask_LedRunnable, RTE_MSEC_SystemTimer(0) + (TickType)1, RTE_MSEC_SystemTimer(300)); /* PRQA S 3417 */ /* MD_Rte_Os */
+  (void)SetRelAlarm(Rte_Al_TE_OsTask_APP_0_50ms, RTE_MSEC_SystemTimer(0) + (TickType)1, RTE_MSEC_SystemTimer(50)); /* PRQA S 3417 */ /* MD_Rte_Os */
 
   return RTE_E_OK;
 } /* PRQA S 6050 */ /* MD_MSR_STCAL */
@@ -238,6 +357,7 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Stop(void) /* PRQA S 0850 */ /* MD_MSR_19.8 *
   /* deactivate alarms */
   (void)CancelAlarm(Rte_Al_TE_Cdd_SBC_UJA1169_Sbc_Test_Runnable); /* PRQA S 3417 */ /* MD_Rte_Os */
   (void)CancelAlarm(Rte_Al_TE_CpLedTask_LedRunnable); /* PRQA S 3417 */ /* MD_Rte_Os */
+  (void)CancelAlarm(Rte_Al_TE_OsTask_APP_0_50ms); /* PRQA S 3417 */ /* MD_Rte_Os */
 
   return RTE_E_OK;
 }
@@ -1329,11 +1449,17 @@ TASK(OsTask_APP) /* PRQA S 3408, 1503 */ /* MD_Rte_3408, MD_MSR_14.1 */
   /* call runnable */
   CtLedTask_InitRunnable();
 
+  /* call runnable */
+  Test_SWC2_Init();
+
+  /* call runnable */
+  Test_SWC_Init();
+
   for(;;)
   {
-    (void)WaitEvent(Rte_Ev_Run_Cdd_SBC_UJA1169_Sbc_Test_Runnable | Rte_Ev_Run_CpLedTask_LedRunnable); /* PRQA S 3417 */ /* MD_Rte_Os */
+    (void)WaitEvent(Rte_Ev_Cyclic_OsTask_APP_0_50ms | Rte_Ev_Run_Cdd_SBC_UJA1169_Sbc_Test_Runnable | Rte_Ev_Run_CpLedTask_LedRunnable); /* PRQA S 3417 */ /* MD_Rte_Os */
     (void)GetEvent(OsTask_APP, &ev); /* PRQA S 3417 */ /* MD_Rte_Os */
-    (void)ClearEvent(ev & (Rte_Ev_Run_Cdd_SBC_UJA1169_Sbc_Test_Runnable | Rte_Ev_Run_CpLedTask_LedRunnable)); /* PRQA S 3417 */ /* MD_Rte_Os */
+    (void)ClearEvent(ev & (Rte_Ev_Cyclic_OsTask_APP_0_50ms | Rte_Ev_Run_Cdd_SBC_UJA1169_Sbc_Test_Runnable | Rte_Ev_Run_CpLedTask_LedRunnable)); /* PRQA S 3417 */ /* MD_Rte_Os */
 
     if ((ev & Rte_Ev_Run_CpLedTask_LedRunnable) != (EventMaskType)0)
     {
@@ -1345,6 +1471,15 @@ TASK(OsTask_APP) /* PRQA S 3408, 1503 */ /* MD_Rte_3408, MD_MSR_14.1 */
     {
       /* call runnable */
       Sbc_Test_Runnable();
+    }
+
+    if ((ev & Rte_Ev_Cyclic_OsTask_APP_0_50ms) != (EventMaskType)0)
+    {
+      /* call runnable */
+      Test_SWC2_Main();
+
+      /* call runnable */
+      Test_SWC_Main();
     }
   }
 } /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
@@ -1428,6 +1563,11 @@ TASK(OsTask_BSW_SCHM) /* PRQA S 3408, 1503 */ /* MD_Rte_3408, MD_MSR_14.1 */
  *********************************************************************************************************************/
 
 /* module specific MISRA deviations:
+   MD_Rte_0306:  MISRA rule: 11.3
+     Reason:     An optimized copy algorithm can be used for aligned data. To check if pointers are aligned, pointers need to be casted to an integer type.
+     Risk:       No functional risk. Only the lower 8 bits of the address are checked, therefore all integer types are sufficient.
+     Prevention: Not required.
+
    MD_Rte_0781:  MISRA rule: 5.6
      Reason:     The name is being used as a structure/union member as well as being a label, tag or ordinary identifier.
                  The compliance to this rule is under user's control.

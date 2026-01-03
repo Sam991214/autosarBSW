@@ -9,9 +9,9 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *          File:  Rte_CtLedTask.h
- *        Config:  C:/Vector/CBD1800257_D01_S32K1xx/Applications/S32K144_Start_new/S32K144_Start.dpa
+ *        Config:  D:/study/autosar_bsw/AUTOSAR_TOOLs/S32K144_SIP/MICROSAR/CBD1800257_D01_S32K1xx/Applications/S32K144_Start_new_IAR/S32K144_Start.dpa
  *     SW-C Type:  CtLedTask
- *  Generated at:  Mon Jun  7 11:19:40 2021
+ *  Generated at:  Sun Jan  4 05:34:24 2026
  *
  *     Generator:  MICROSAR RTE Generator Version 4.19.0
  *                 RTE Core Version 1.19.0
@@ -64,12 +64,28 @@ extern CONSTP2CONST(struct Rte_CDS_CtLedTask, RTE_CONST, RTE_CONST) Rte_Inst_CtL
 typedef P2CONST(struct Rte_CDS_CtLedTask, TYPEDEF, RTE_CONST) Rte_Instance;
 
 
+/**********************************************************************************************************************
+ * Init Values for unqueued S/R communication (primitive types only)
+ *********************************************************************************************************************/
+
+# define Rte_InitValue_lwt_Lampcnt_u8_lwt_Signal (0U)
+# define Rte_InitValue_lwt_RearInterLight_Bool_lwtSignal (FALSE)
+# define Rte_InitValue_lwt_develop_FrongLight_bool_signal_lwt_develop (FALSE)
+# define Rte_InitValue_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop (0U)
+# define Rte_InitValue_lwt_develop_RearRightWinPos_u8_signal_lwt_develop (0U)
+
+
 # define RTE_START_SEC_CODE
 # include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
 
 /**********************************************************************************************************************
  * API prototypes
  *********************************************************************************************************************/
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CtLedTask_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop(P2VAR(uint8, AUTOMATIC, RTE_CTLEDTASK_APPL_VAR) data); /* PRQA S 0850 */ /* MD_MSR_19.8 */
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CtLedTask_lwt_develop_RearRightWinPos_u8_signal_lwt_develop(P2VAR(uint8, AUTOMATIC, RTE_CTLEDTASK_APPL_VAR) data); /* PRQA S 0850 */ /* MD_MSR_19.8 */
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CtLedTask_lwt_Lampcnt_u8_lwt_Signal(uint8 data); /* PRQA S 0850 */ /* MD_MSR_19.8 */
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CtLedTask_lwt_RearInterLight_Bool_lwtSignal(boolean data); /* PRQA S 0850 */ /* MD_MSR_19.8 */
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CtLedTask_lwt_develop_FrongLight_bool_signal_lwt_develop(boolean data); /* PRQA S 0850 */ /* MD_MSR_19.8 */
 FUNC(Std_ReturnType, RTE_CODE) Rte_Call_CtLedTask_UR_CN_CAN00_06ecbb07_GetCurrentComMode(P2VAR(ComM_ModeType, AUTOMATIC, RTE_CTLEDTASK_APPL_VAR) ComMode); /* PRQA S 0850 */ /* MD_MSR_19.8 */
 FUNC(Std_ReturnType, RTE_CODE) Rte_Call_CtLedTask_UR_CN_CAN00_06ecbb07_GetMaxComMode(P2VAR(ComM_ModeType, AUTOMATIC, RTE_CTLEDTASK_APPL_VAR) ComMode); /* PRQA S 0850 */ /* MD_MSR_19.8 */
 FUNC(Std_ReturnType, RTE_CODE) Rte_Call_CtLedTask_UR_CN_CAN00_06ecbb07_GetRequestedComMode(P2VAR(ComM_ModeType, AUTOMATIC, RTE_CTLEDTASK_APPL_VAR) ComMode); /* PRQA S 0850 */ /* MD_MSR_19.8 */
@@ -78,6 +94,21 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Call_CtLedTask_UR_CN_CAN00_06ecbb07_RequestCo
 # define RTE_STOP_SEC_CODE
 # include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
 
+
+
+/**********************************************************************************************************************
+ * Rte_Read_<p>_<d> (explicit S/R communication with isQueued = false)
+ *********************************************************************************************************************/
+# define Rte_Read_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop Rte_Read_CtLedTask_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop
+# define Rte_Read_lwt_develop_RearRightWinPos_u8_signal_lwt_develop Rte_Read_CtLedTask_lwt_develop_RearRightWinPos_u8_signal_lwt_develop
+
+
+/**********************************************************************************************************************
+ * Rte_Write_<p>_<d> (explicit S/R communication with isQueued = false)
+ *********************************************************************************************************************/
+# define Rte_Write_lwt_Lampcnt_u8_lwt_Signal Rte_Write_CtLedTask_lwt_Lampcnt_u8_lwt_Signal
+# define Rte_Write_lwt_RearInterLight_Bool_lwtSignal Rte_Write_CtLedTask_lwt_RearInterLight_Bool_lwtSignal
+# define Rte_Write_lwt_develop_FrongLight_bool_signal_lwt_develop Rte_Write_CtLedTask_lwt_develop_FrongLight_bool_signal_lwt_develop
 
 
 /**********************************************************************************************************************
@@ -134,7 +165,24 @@ FUNC(void, CtLedTask_CODE) CtLedTask_InitRunnable(void); /* PRQA S 0850 */ /* MD
  *---------------------------------------------------------------------------------------------------------------------
  *
  * Executed if at least one of the following trigger conditions occurred:
- *   - triggered on TimingEvent every 500ms
+ *   - triggered on TimingEvent every 300ms
+ *
+ **********************************************************************************************************************
+ *
+ * Input Interfaces:
+ * =================
+ *   Explicit S/R API:
+ *   -----------------
+ *   Std_ReturnType Rte_Read_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop(uint8 *data)
+ *   Std_ReturnType Rte_Read_lwt_develop_RearRightWinPos_u8_signal_lwt_develop(uint8 *data)
+ *
+ * Output Interfaces:
+ * ==================
+ *   Explicit S/R API:
+ *   -----------------
+ *   Std_ReturnType Rte_Write_lwt_Lampcnt_u8_lwt_Signal(uint8 data)
+ *   Std_ReturnType Rte_Write_lwt_RearInterLight_Bool_lwtSignal(boolean data)
+ *   Std_ReturnType Rte_Write_lwt_develop_FrongLight_bool_signal_lwt_develop(boolean data)
  *
  *********************************************************************************************************************/
 

@@ -78,6 +78,7 @@
  * EcuM_UserType: Integer in interval [0...255]
  * NetworkHandleType: Integer in interval [0...255]
  * TimeInMicrosecondsType: Integer in interval [0...4294967295]
+ * Voltage_u16_lwt: Integer in interval [0...65535]
  * boolean: Boolean (standard type)
  * sint8: Integer in interval [-128...127] (standard type)
  * uint16: Integer in interval [0...65535] (standard type)
@@ -120,6 +121,7 @@
  * EcuM_ModeType: Enumeration of integer in interval [0...3] with enumerators
  * EcuM_ShutdownCauseType: Enumeration of integer in interval [0...3] with enumerators
  * EcuM_StateType: Enumeration of integer in interval [0...144] with enumerators
+ * Enum_lwt: Enumeration of integer in interval [0...255] with enumerators
  *
  * Array Types:
  * ============
@@ -127,6 +129,13 @@
  * Dcm_Data2ByteType: Array with 2 element(s) of type uint8
  * Dcm_Data4ByteType: Array with 4 element(s) of type uint8
  * Dem_MaxDataValueType: Array with 4 element(s) of type uint8
+ * Test_array_U8_lwt: Array with 9 element(s) of type uint8
+ *
+ * Record Types:
+ * =============
+ * Voltage_lwt_struct_record: Record with elements
+ *   current of type uint8
+ *   volt of type uint16
  *
  *********************************************************************************************************************/
 

@@ -172,9 +172,7 @@
             <Settings Name="com.vector.cfg.gui.core.generators.ExtGenStepOrder">
                 <Setting Value="INTERNAL_GENERATION" Name="Order"/>
             </Settings>
-            <Settings Name="com.vector.cfg.gui.core.generators.GeneratedModules">
-                <Setting Value="false" Name="Os"/>
-            </Settings>
+            <Settings Name="com.vector.cfg.gui.core.generators.GeneratedModules"/>
             <Settings Name="com.vector.cfg.gui.core.generators.GenerationTarget">
                 <Setting Value="Real Target" Name="TargetType"/>
             </Settings>
@@ -292,5 +290,7 @@
         <Component Name="CpAppTask" GenerationEnabled="true"/>
         <Component Name="Cdd_SBC_UJA1169" GenerationEnabled="true"/>
         <Component Name="CddSbc" GenerationEnabled="true"/>
+        <Component Name="Test_SWC" GenerationEnabled="true"/>
+        <Component Name="Test2_SWC" GenerationEnabled="true"/>
     </SwctGeneration>
 </ProjectAssistant>

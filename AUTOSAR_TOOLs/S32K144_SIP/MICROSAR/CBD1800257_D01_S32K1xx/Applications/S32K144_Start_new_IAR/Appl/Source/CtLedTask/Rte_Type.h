@@ -9,9 +9,9 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *          File:  Rte_Type.h
- *        Config:  C:/Vector/CBD1800257_D01_S32K1xx/Applications/S32K144_Start_new/S32K144_Start.dpa
+ *        Config:  D:/study/autosar_bsw/AUTOSAR_TOOLs/S32K144_SIP/MICROSAR/CBD1800257_D01_S32K1xx/Applications/S32K144_Start_new_IAR/S32K144_Start.dpa
  *     SW-C Type:  CtLedTask
- *  Generated at:  Mon Jun  7 11:19:40 2021
+ *  Generated at:  Sun Jan  4 05:34:24 2026
  *
  *     Generator:  MICROSAR RTE Generator Version 4.19.0
  *                 RTE Core Version 1.19.0
@@ -57,6 +57,16 @@ typedef uint8 Dcm_Data4ByteType[4];
 
 #  define Rte_TypeDef_Dem_MaxDataValueType
 typedef uint8 Dem_MaxDataValueType[4];
+
+#  define Rte_TypeDef_Test_array_U8_lwt
+typedef uint8 Test_array_U8_lwt[9];
+
+#  define Rte_TypeDef_Voltage_lwt_struct_record
+typedef struct
+{
+  uint8 current;
+  uint16 volt;
+} Voltage_lwt_struct_record;
 
 #  define Rte_TypeDef_BswM_ESH_Mode
 typedef uint8 BswM_ESH_Mode;
@@ -184,6 +194,9 @@ typedef uint32 EcuM_TimeType;
 #  define Rte_TypeDef_EcuM_UserType
 typedef uint8 EcuM_UserType;
 
+#  define Rte_TypeDef_Enum_lwt
+typedef uint8 Enum_lwt;
+
 #  define Rte_TypeDef_NvM_RequestResultType
 typedef uint8 NvM_RequestResultType;
 
@@ -192,6 +205,9 @@ typedef uint8 NvM_ServiceIdType;
 
 #  define Rte_TypeDef_TimeInMicrosecondsType
 typedef uint32 TimeInMicrosecondsType;
+
+#  define Rte_TypeDef_Voltage_u16_lwt
+typedef uint16 Voltage_u16_lwt;
 
 # endif
 

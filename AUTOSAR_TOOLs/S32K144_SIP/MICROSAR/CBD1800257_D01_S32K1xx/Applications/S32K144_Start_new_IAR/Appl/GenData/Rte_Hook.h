@@ -52,6 +52,8 @@
  *  Rte_CallHook_DemSatellite_0_CBReadData_OccurrenceCounter_OccurenceCounter_ReadData_Start
  *  Rte_CallHook_DemSatellite_0_CBReadData_OdometerValue_OdometerValue_ReadData_Return
  *  Rte_CallHook_DemSatellite_0_CBReadData_OdometerValue_OdometerValue_ReadData_Start
+ *  Rte_CallHook_Test_SWC2_Test_SWC_Service_Operation_lwt_Return
+ *  Rte_CallHook_Test_SWC2_Test_SWC_Service_Operation_lwt_Start
  *  Rte_ComHook_lwt_sig_recv2_RearLeftWinPos_olwt_msg_recv2_oCAN00_1d859839_Rx_SigRx
  *  Rte_ComHook_lwt_sig_recv2_RearRightWinPos_olwt_msg_recv2_oCAN00_b5508b86_Rx_SigRx
  *  Rte_ComHook_lwt_sig_trans2_FrongLight_olwt_msg_transmit2_oCAN00_65e2995e_Tx_SigTx
@@ -69,6 +71,12 @@
  *  Rte_ReadHook_CtLedTask_lwt_develop_RearLeftWinPos_u8_signal_lwt_develop_Start
  *  Rte_ReadHook_CtLedTask_lwt_develop_RearRightWinPos_u8_signal_lwt_develop_Return
  *  Rte_ReadHook_CtLedTask_lwt_develop_RearRightWinPos_u8_signal_lwt_develop_Start
+ *  Rte_ReadHook_Test_SWC2_lwt_Test_Swc2_Read_u8_Signal_lwt_Return
+ *  Rte_ReadHook_Test_SWC2_lwt_Test_Swc2_Read_u8_Signal_lwt_Start
+ *  Rte_ReadHook_Test_SWC_TestEnum_lwt_u8_signal_Return
+ *  Rte_ReadHook_Test_SWC_TestEnum_lwt_u8_signal_Start
+ *  Rte_ReadHook_Test_SWC_lwt_Test_Swc_Read_u8_Signal_lwt_Return
+ *  Rte_ReadHook_Test_SWC_lwt_Test_Swc_Read_u8_Signal_lwt_Start
  *  Rte_Runnable_BswM_BswM_MainFunction_Return
  *  Rte_Runnable_BswM_BswM_MainFunction_Start
  *  Rte_Runnable_CddSbc_Sbc_Test_Runnable_Return
@@ -209,6 +217,16 @@
  *  Rte_Runnable_Os_OsCore0_swc_GetCounterValue_Start
  *  Rte_Runnable_Os_OsCore0_swc_GetElapsedValue_Return
  *  Rte_Runnable_Os_OsCore0_swc_GetElapsedValue_Start
+ *  Rte_Runnable_Test_SWC2_Test_SWC2_Init_Return
+ *  Rte_Runnable_Test_SWC2_Test_SWC2_Init_Start
+ *  Rte_Runnable_Test_SWC2_Test_SWC2_Main_Return
+ *  Rte_Runnable_Test_SWC2_Test_SWC2_Main_Start
+ *  Rte_Runnable_Test_SWC_Test_SWC_Init_Return
+ *  Rte_Runnable_Test_SWC_Test_SWC_Init_Start
+ *  Rte_Runnable_Test_SWC_Test_SWC_Main_Return
+ *  Rte_Runnable_Test_SWC_Test_SWC_Main_Start
+ *  Rte_Runnable_Test_SWC_Test_SWC_Service_Operation_lwt_Return
+ *  Rte_Runnable_Test_SWC_Test_SWC_Service_Operation_lwt_Start
  *  Rte_SwitchAckHook_Dcm_DcmEcuReset_DcmEcuReset_Return
  *  Rte_SwitchAckHook_Dcm_DcmEcuReset_DcmEcuReset_Start
  *  Rte_SwitchHook_BswM_Switch_ESH_ModeSwitch_BswM_MDGP_ESH_Mode_Return
@@ -229,6 +247,16 @@
  *  Rte_WriteHook_CtLedTask_lwt_RearInterLight_Bool_lwtSignal_Start
  *  Rte_WriteHook_CtLedTask_lwt_develop_FrongLight_bool_signal_lwt_develop_Return
  *  Rte_WriteHook_CtLedTask_lwt_develop_FrongLight_bool_signal_lwt_develop_Start
+ *  Rte_WriteHook_Test_SWC2_lwt_Test_Swc2_Write_u8_Signal_lwt_Return
+ *  Rte_WriteHook_Test_SWC2_lwt_Test_Swc2_Write_u8_Signal_lwt_Start
+ *  Rte_WriteHook_Test_SWC_lwt_Test_Swc_Write_u8_Signal_lwt_Return
+ *  Rte_WriteHook_Test_SWC_lwt_Test_Swc_Write_u8_Signal_lwt_Start
+ *  Rte_WriteHook_Test_SWC_volt_array_port_test_lwt_u8_signal_Return
+ *  Rte_WriteHook_Test_SWC_volt_array_port_test_lwt_u8_signal_Start
+ *  Rte_WriteHook_Test_SWC_volt_struct_record_test_lwt_St_Signal_Return
+ *  Rte_WriteHook_Test_SWC_volt_struct_record_test_lwt_St_Signal_Start
+ *  Rte_WriteHook_Test_SWC_volt_u16_port_test_lwt_u16_signal_Return
+ *  Rte_WriteHook_Test_SWC_volt_u16_port_test_lwt_u16_signal_Start
  *  SchM_EnterHook_Adc_ADC_EXCLUSIVE_AREA_00_Return
  *  SchM_EnterHook_Adc_ADC_EXCLUSIVE_AREA_00_Start
  *  SchM_EnterHook_Adc_ADC_EXCLUSIVE_AREA_01_Return
