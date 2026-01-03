@@ -102,7 +102,7 @@ extern "C" {
 /** 
 * @brief This constant used for other modules to check if ADC is present in the project.  
 */
-#define USE_ADC_MODULE              (STD_OFF)
+#define USE_ADC_MODULE              (STD_ON)
 
 /** 
 * @brief This constant used for other modules to check if CAN is present in the project.  
@@ -152,7 +152,7 @@ extern "C" {
 /** 
 * @brief This constant used for other modules to check if GPT is present in the project.  
 */
-#define USE_GPT_MODULE              (STD_OFF)
+#define USE_GPT_MODULE              (STD_ON)
 
 /** 
 * @brief This constant used for other modules to check if ICU is present in the project.  
@@ -197,7 +197,7 @@ extern "C" {
 /** 
 * @brief This constant used for other modules to check if PWM is present in the project.  
 */
-#define USE_PWM_MODULE              (STD_OFF)
+#define USE_PWM_MODULE              (STD_ON)
 
 /** 
 * @brief This constant used for other modules to check if SPI is present in the project.  

@@ -69,17 +69,17 @@ FUNC(void, CddSbc_CODE) Sbc_Test_Runnable(void) /* PRQA S 0850 */ /* MD_MSR_19.8
  * Symbol: Sbc_Test_Runnable
  *********************************************************************************************************************/
 
-Spi_DataBufferType readSbcCmd[4];
-static Spi_DataBufferType sbcReadData[4];
-readSbcCmd[0]= 0x7E<<1 | 1;
-readSbcCmd[1] = 0xFF;
-result =Spi_SetupEB((Spi_ChannelType)0,readSbcCmd,sbcReadData,2);
-if(result == E_OK)
+Spi_DataBufferType readSbcCmd[4];//发送
+static Spi_DataBufferType sbcReadData[4];//接收
+readSbcCmd[0] = 0xAA;
+readSbcCmd[1] = 0xF0;
+result =Spi_SetupEB((Spi_ChannelType)0,readSbcCmd,sbcReadData,2);//给0通道发送两个字节，并传入接收缓存
+if(result == E_OK)//配置成功加一次
 {
     a++;
 }
-result = Spi_SyncTransmit((Spi_SequenceType)0);
-if(result == E_OK)
+result = Spi_SyncTransmit((Spi_SequenceType)0);//开始同步接收和发送，通讯启动
+ if(result == E_OK)
 {
     a++;
 }

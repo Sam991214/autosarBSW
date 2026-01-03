@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Lcfg.h
- *   Generation Time: 2021-04-15 16:32:15
+ *   Generation Time: 2026-01-02 06:52:31
  *           Project: S32K144_Start - Version 1.0
  *          Delivery: CBD1800257_D01
  *      Tool Version: DaVinci Configurator  5.18.37 SP1
@@ -112,6 +112,18 @@ extern FUNC(void, OS_OSTASK_BSW_SCHM_CODE) Os_Task_OsTask_BSW_SCHM(void);
 # include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
 
 
+# define OS_START_SEC_Adc_Adc12bsarv2_EndGroupConvUnit0_CODE
+# include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+/**********************************************************************************************************************
+ *  Adc_Adc12bsarv2_EndGroupConvUnit0()
+ *********************************************************************************************************************/
+extern FUNC(void, OS_ADC_ADC12BSARV2_ENDGROUPCONVUNIT0_CODE) Os_Isr_Adc_Adc12bsarv2_EndGroupConvUnit0(void);
+
+# define OS_STOP_SEC_Adc_Adc12bsarv2_EndGroupConvUnit0_CODE
+# include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+
 # define OS_START_SEC_CanBusOffIsr_0_CODE
 # include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
 
@@ -133,6 +145,18 @@ extern FUNC(void, OS_CANBUSOFFISR_0_CODE) Os_Isr_CanBusOffIsr_0(void);
 extern FUNC(void, OS_CANMAILBOXISR_0_CODE) Os_Isr_CanMailboxIsr_0(void);
 
 # define OS_STOP_SEC_CanMailboxIsr_0_CODE
+# include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+
+# define OS_START_SEC_LPIT_0_CH_0_ISR_CODE
+# include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+/**********************************************************************************************************************
+ *  LPIT_0_CH_0_ISR()
+ *********************************************************************************************************************/
+extern FUNC(void, OS_LPIT_0_CH_0_ISR_CODE) Os_Isr_LPIT_0_CH_0_ISR(void);
+
+# define OS_STOP_SEC_LPIT_0_CH_0_ISR_CODE
 # include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
 
 

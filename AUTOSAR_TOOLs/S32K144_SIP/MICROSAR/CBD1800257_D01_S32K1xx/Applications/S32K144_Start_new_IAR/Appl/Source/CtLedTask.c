@@ -52,6 +52,7 @@
 #include "Dio.h"
 #include "Com_Cfg.h"//引入发送id宏定义头文件
 #include "Appl_Cbk.h"//接收回调函数和超时回调函数头声明的头文件，用于在这边定义函数
+#include "Pwm.h"
 
 
 
@@ -120,6 +121,7 @@
 /**********************************************************************************************************************
  * DO NOT CHANGE THIS COMMENT!           << End of documentation area >>                    DO NOT CHANGE THIS COMMENT!
  *********************************************************************************************************************/
+static  uint16 Pwm_duty = 0;
 
 FUNC(void, CtLedTask_CODE) CtLedTask_InitRunnable(void) /* PRQA S 0850 */ /* MD_MSR_19.8 */
 {
@@ -127,6 +129,17 @@ FUNC(void, CtLedTask_CODE) CtLedTask_InitRunnable(void) /* PRQA S 0850 */ /* MD_
  * DO NOT CHANGE THIS COMMENT!           << Start of runnable implementation >>             DO NOT CHANGE THIS COMMENT!
  * Symbol: CtLedTask_InitRunnable
  *********************************************************************************************************************/
+static uint16 resultbuffer[1]={0};
+Adc_SetupResultBuffer(0,resultbuffer);//建立 Group 与 内存数组 的物理连接，风险是可能读到正在改的数据。硬件填写的风险：ADC 硬件（或 DMA）在后台填数据是非常“粗鲁”的，它不管你此时此刻是不是正在读。如果你直接读数组，读到一半硬件正好在改下一位，你的数据就“撕裂”了（一半旧一半新）。
+//Adc_ReadGroup 的安全屏障，驱动会把 MyArray 里的安全数据拷贝一份给你。：当你调用这个函数时，驱动会帮你检查：
+//转换是不是真的干完了？
+//数据是不是有效？
+//它会以一种原子操作的方式，确保你拿到的这一组数据是同一时刻生成的“完整快照”。
+
+Adc_EnableGroupNotification(0);//开启回调函数通知，不然回调函数没用
+Gpt_EnableNotification(0);//开启回调函数通知，不然回调函数没用
+Gpt_StartTimer(0,240000);//id:0 目标值：10ms 频率24mhz，所以时间为1/24000000，为一秒钟跳24000000下，10ms为0.01s，所以0.01*24000000为240000,2400回调一次
+
 
 Rte_Call_UR_CN_CAN00_06ecbb07_RequestComMode(COMM_FULL_COMMUNICATION);
 /**********************************************************************************************************************
@@ -161,14 +174,7 @@ FUNC(void, CtLedTask_CODE) LedRunnable(void) /* PRQA S 0850 */ /* MD_MSR_19.8 */
  * Symbol: LedRunnable
  *********************************************************************************************************************/
 
-static unsigned char  LedState=0;
-static int  LedCnt=0;
 
-LedCnt++;
-
-LedState ^= 0x01;
-
-static  int ledcnt = 0;
 static  unsigned char lwt_develop_RearLeftWinPos = 0;
 static  unsigned char lwt_develop_RearRightWinPos = 0;
 //static  unsigned char RearLeft_window_LWT = 1;
@@ -178,10 +184,19 @@ static  unsigned char RearRight_window_case1 = 32;
 
 static  unsigned char ms10_3times_cnt = 0;//mixed下10ms连发三帧+1帧 计时300ms x 10 = 3000ms才发 
 
+static  unsigned char lwt_switch = 0;//开关按钮ptc12
+static  unsigned char lwt_led = 0;//灯ptd0
+static  Pwm_OutputStateType pwmstate;
+static  int ledcnt = 0;
+
+
+
+
 
 
  ledcnt++;
- Rte_Write_lwt_Lampcnt_u8_lwt_Signal(ledcnt);
+// Rte_Write_lwt_Lampcnt_u8_lwt_Signal(ledcnt);
+ 
 // Rte_Write_lwt_RearInterLight_Bool_lwtSignal(1);//mytransmit
 // if(ms10_3times_cnt == 10)
 // {
@@ -206,11 +221,46 @@ Com_SendSignal(ComConf_ComGroupSignal_lwt_sig_group_001, (&RearRight_window_case
 Com_SendSignalGroup(ComConf_ComSignalGroup_lwt_ComSignalGroup);//信号的属性以group为主，整个ipdu的发送以group属性为准
 
  
- Dio_WriteChannel(112,LedState);
+ 
+
+ 
+ lwt_switch = Dio_ReadChannel(DioConf_DioChannel_DioChannel_ptc12_lwt_switch);//按下开关时，电源导通到上拉电阻，收到为高
+ if(lwt_switch == 1)
+ {
+	Dio_WriteChannel(DioConf_DioChannel_DioChannel_ptd0_lwt_led,0);//低输出时，电源导通，灯亮
+ }
+ else
+ {
+	Dio_WriteChannel(DioConf_DioChannel_DioChannel_ptd0_lwt_led,1);//高输出时，电源无法导通，灯灭
+ }
+ Com_SendSignal(ComConf_ComSignal_RearRight_window_case1, (&lwt_switch));//发送开关状态 报文为0x600
+
+ Adc_StartGroupConversion(0);//开始 0 group adc 转换,调用一次，oneshot获取一次，并且触发回调中断，而continued是点一下之后都是采集一轮继续采集，并且周期触发回调 
+ Pwm_SetDutyCycle(0,Pwm_duty);//通道0,扭旋钮调节小灯ptd15亮度
+ pwmstate = Pwm_GetOutputState(0);
+
 
 /**********************************************************************************************************************
  * DO NOT CHANGE THIS COMMENT!           << End of runnable implementation >>               DO NOT CHANGE THIS COMMENT!
  *********************************************************************************************************************/
+}
+
+void GPT_10ms_lwt(void)//GPT定时器在/ActiveEcuC/Gpt/GptChannelConfigSet/GptChannelConfiguration中被定义，10ms要在上面的gpt_starter定义
+{
+	static unsigned char  LedState=0;
+	static int  LedCnt=0;
+	 
+	if(LedCnt>=500)//100*0.01=1s
+	{
+		LedState ^= 0x01;
+		Dio_WriteChannel(112,LedState);//1s闪一次
+		LedCnt = 0;
+	}
+	else
+	{
+		LedCnt++; 
+	}
+
 }
 
 static  unsigned char cbkcnt = 1;
@@ -220,14 +270,24 @@ static  unsigned char cbkcnt = 1;
  FUNC(void, COM_APPL_CODE) lwt_rear_left_win_callback(void)
  {
 	cbkcnt = 0;//收到了报文发0
+    Com_SendSignal(ComConf_ComSignal_RearLeft_window_LWT, (&cbkcnt));
  }
  FUNC(void, COM_APPL_CODE) lwt_rear_left_win_timeout(void)
  {
-//	cbkcnt = 2;
-	Com_SendSignal(ComConf_ComSignal_RearLeft_window_LWT, (&cbkcnt));//超时发1
+    cbkcnt = 1;
+	Com_SendSignal(ComConf_ComSignal_RearLeft_window_LWT, (&cbkcnt));//超时发1或者2
  }
+ void adc_group_notification_lwt(void)
+ {
+	static  uint16 adc_data = 0;
+	static  uint16 retvalue = 0;
+	//获取adc结果函数只能放在中断回调中，放在主程序task中会造成数据不同步，adc没转完只会读到0
+	retvalue = Adc_ReadGroup(0, &adc_data);//最大4096，为了满足放进去一个byte大小，需要除20缩小,不用中断时，需要把错误检测给关了，不然会强行读不到数据
+	Pwm_duty = adc_data*8; //因为占空比最大有32768，所以adcdata最多4096，所以*8扩大到4万多，duty超过也按最大来
+  	adc_data = adc_data/20;//为了发出去挤在1个byte放的下，故意缩小20倍
 
- 
+  	Com_SendSignal(ComConf_ComSignal_sig_LampCnt_omsg_MyECU_Lamp_oCAN00_f37e68ea_Tx, (&adc_data));
+ }
 
 
 
