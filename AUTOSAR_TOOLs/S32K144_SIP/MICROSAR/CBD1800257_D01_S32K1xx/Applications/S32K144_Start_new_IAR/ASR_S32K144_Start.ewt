@@ -3066,7 +3066,13 @@
                 <name>$PROJ_DIR$\Appl\Source\BswM_Callout_Stubs.c</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\Appl\Source\CCC_expand.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\Appl\Source\CddSbc.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\Appl\Source\CPUload_basic.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\Appl\Source\CtLedTask.c</name>
@@ -3078,10 +3084,19 @@
                 <name>$PROJ_DIR$\Appl\Source\EcuM_Callout_Stubs.c</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\Appl\Source\EMC_expand.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\Appl\Source\LOCK_basic.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\Appl\Source\Os_Callout_Stubs.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\Appl\Source\OsAppTask.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\Appl\Source\PWL_expand.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\Appl\Source\Test_SWC.c</name>

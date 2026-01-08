@@ -31,6 +31,8 @@
 #include "Rte_Main.h"
 
 #include "Rte_BswM.h"
+#include "Rte_CCC_expand.h"
+#include "Rte_CPUload_basic.h"
 #include "Rte_CddSbc.h"
 #include "Rte_ComM.h"
 #include "Rte_CtLedTask.h"
@@ -38,8 +40,11 @@
 #include "Rte_DemMaster_0.h"
 #include "Rte_DemSatellite_0.h"
 #include "Rte_Det.h"
+#include "Rte_EMC_expand.h"
 #include "Rte_EcuM.h"
+#include "Rte_LOCK_basic.h"
 #include "Rte_Os_OsCore0_swc.h"
+#include "Rte_PWL_expand.h"
 #include "Rte_Test_SWC.h"
 #include "Rte_Test_SWC2.h"
 #include "SchM_Adc.h"
@@ -217,6 +222,10 @@ VAR(BswM_ESH_Mode, RTE_VAR_NOINIT) Rte_ModeMachine_BswM_Switch_ESH_ModeSwitch_Bs
 #define RTE_CONST_MSEC_SystemTimer_5 (5UL)
 #define RTE_CONST_MSEC_SystemTimer_50 (50UL)
 
+#define RTE_CONST_SEC_SystemTimer_0 (0UL)
+#define RTE_CONST_SEC_SystemTimer_1 (1000UL)
+#define RTE_CONST_SEC_SystemTimer_2 (2000UL)
+
 
 /**********************************************************************************************************************
  * Internal definitions
@@ -343,8 +352,14 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Start(void) /* PRQA S 0850 */ /* MD_MSR_19.8 
 
   /* activate the tasks */
   (void)ActivateTask(OsTask_APP); /* PRQA S 3417 */ /* MD_Rte_Os */
+  (void)ActivateTask(OsTask_EMC_PWL_CCC); /* PRQA S 3417 */ /* MD_Rte_Os */
 
   /* activate the alarms used for TimingEvents */
+  (void)SetRelAlarm(Rte_Al_TE_LOCK_LOCK_basic_Runnable, RTE_MSEC_SystemTimer(0) + (TickType)1, RTE_MSEC_SystemTimer(100)); /* PRQA S 3417 */ /* MD_Rte_Os */
+  (void)SetRelAlarm(Rte_Al_TE_CCC_CCC_expand_Runnable_2S, RTE_SEC_SystemTimer(0) + (TickType)1, RTE_SEC_SystemTimer(2)); /* PRQA S 3417 */ /* MD_Rte_Os */
+  (void)SetRelAlarm(Rte_Al_TE_EMC_EMC_expand_Runnable_10ms, RTE_MSEC_SystemTimer(0) + (TickType)1, RTE_MSEC_SystemTimer(10)); /* PRQA S 3417 */ /* MD_Rte_Os */
+  (void)SetRelAlarm(Rte_Al_TE_PWL_PWL_expand_Runnable_20ms, RTE_MSEC_SystemTimer(0) + (TickType)1, RTE_MSEC_SystemTimer(20)); /* PRQA S 3417 */ /* MD_Rte_Os */
+  (void)SetRelAlarm(Rte_Al_TE_CPULoad_CPUload_basic_Runnable_1S, RTE_SEC_SystemTimer(0) + (TickType)1, RTE_SEC_SystemTimer(1)); /* PRQA S 3417 */ /* MD_Rte_Os */
   (void)SetRelAlarm(Rte_Al_TE_Cdd_SBC_UJA1169_Sbc_Test_Runnable, RTE_MSEC_SystemTimer(0) + (TickType)1, RTE_MSEC_SystemTimer(100)); /* PRQA S 3417 */ /* MD_Rte_Os */
   (void)SetRelAlarm(Rte_Al_TE_CpLedTask_LedRunnable, RTE_MSEC_SystemTimer(0) + (TickType)1, RTE_MSEC_SystemTimer(300)); /* PRQA S 3417 */ /* MD_Rte_Os */
   (void)SetRelAlarm(Rte_Al_TE_OsTask_APP_0_50ms, RTE_MSEC_SystemTimer(0) + (TickType)1, RTE_MSEC_SystemTimer(50)); /* PRQA S 3417 */ /* MD_Rte_Os */
@@ -358,6 +373,11 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Stop(void) /* PRQA S 0850 */ /* MD_MSR_19.8 *
   (void)CancelAlarm(Rte_Al_TE_Cdd_SBC_UJA1169_Sbc_Test_Runnable); /* PRQA S 3417 */ /* MD_Rte_Os */
   (void)CancelAlarm(Rte_Al_TE_CpLedTask_LedRunnable); /* PRQA S 3417 */ /* MD_Rte_Os */
   (void)CancelAlarm(Rte_Al_TE_OsTask_APP_0_50ms); /* PRQA S 3417 */ /* MD_Rte_Os */
+  (void)CancelAlarm(Rte_Al_TE_CPULoad_CPUload_basic_Runnable_1S); /* PRQA S 3417 */ /* MD_Rte_Os */
+  (void)CancelAlarm(Rte_Al_TE_CCC_CCC_expand_Runnable_2S); /* PRQA S 3417 */ /* MD_Rte_Os */
+  (void)CancelAlarm(Rte_Al_TE_EMC_EMC_expand_Runnable_10ms); /* PRQA S 3417 */ /* MD_Rte_Os */
+  (void)CancelAlarm(Rte_Al_TE_PWL_PWL_expand_Runnable_20ms); /* PRQA S 3417 */ /* MD_Rte_Os */
+  (void)CancelAlarm(Rte_Al_TE_LOCK_LOCK_basic_Runnable); /* PRQA S 3417 */ /* MD_Rte_Os */
 
   return RTE_E_OK;
 }
@@ -1553,6 +1573,71 @@ TASK(OsTask_BSW_SCHM) /* PRQA S 3408, 1503 */ /* MD_Rte_3408, MD_MSR_14.1 */
       Dem_SatelliteMainFunction();
     }
   }
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
+
+/**********************************************************************************************************************
+ * Task:     OsTask_CPULoad_1S
+ * Priority: 20
+ * Schedule: FULL
+ * Alarm:    Cycle Time 1 s Alarm Offset 0 s
+ *********************************************************************************************************************/
+TASK(OsTask_CPULoad_1S) /* PRQA S 3408, 1503 */ /* MD_Rte_3408, MD_MSR_14.1 */
+{
+
+  /* call runnable */
+  CPUload_basic_Runnable_1S();
+
+  (void)TerminateTask(); /* PRQA S 3417 */ /* MD_Rte_Os */
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
+
+/**********************************************************************************************************************
+ * Task:     OsTask_EMC_PWL_CCC
+ * Priority: 20
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(OsTask_EMC_PWL_CCC) /* PRQA S 3408, 1503 */ /* MD_Rte_3408, MD_MSR_14.1 */
+{
+  EventMaskType ev;
+
+  for(;;)
+  {
+    (void)WaitEvent(Rte_Ev_Run_CCC_CCC_expand_Runnable_2S | Rte_Ev_Run_EMC_EMC_expand_Runnable_10ms | Rte_Ev_Run_PWL_PWL_expand_Runnable_20ms); /* PRQA S 3417 */ /* MD_Rte_Os */
+    (void)GetEvent(OsTask_EMC_PWL_CCC, &ev); /* PRQA S 3417 */ /* MD_Rte_Os */
+    (void)ClearEvent(ev & (Rte_Ev_Run_CCC_CCC_expand_Runnable_2S | Rte_Ev_Run_EMC_EMC_expand_Runnable_10ms | Rte_Ev_Run_PWL_PWL_expand_Runnable_20ms)); /* PRQA S 3417 */ /* MD_Rte_Os */
+
+    if ((ev & Rte_Ev_Run_EMC_EMC_expand_Runnable_10ms) != (EventMaskType)0)
+    {
+      /* call runnable */
+      EMC_expand_Runnable_10ms();
+    }
+
+    if ((ev & Rte_Ev_Run_PWL_PWL_expand_Runnable_20ms) != (EventMaskType)0)
+    {
+      /* call runnable */
+      PWL_expand_Runnable_20ms();
+    }
+
+    if ((ev & Rte_Ev_Run_CCC_CCC_expand_Runnable_2S) != (EventMaskType)0)
+    {
+      /* call runnable */
+      CCC_expand_Runnable_2S();
+    }
+  }
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
+
+/**********************************************************************************************************************
+ * Task:     OsTask_LOCK_100ms
+ * Priority: 25
+ * Schedule: FULL
+ * Alarm:    Cycle Time 0.1 s Alarm Offset 0 s
+ *********************************************************************************************************************/
+TASK(OsTask_LOCK_100ms) /* PRQA S 3408, 1503 */ /* MD_Rte_3408, MD_MSR_14.1 */
+{
+
+  /* call runnable */
+  LOCK_basic_Runnable();
+
+  (void)TerminateTask(); /* PRQA S 3417 */ /* MD_Rte_Os */
 } /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
 
 #define RTE_STOP_SEC_CODE

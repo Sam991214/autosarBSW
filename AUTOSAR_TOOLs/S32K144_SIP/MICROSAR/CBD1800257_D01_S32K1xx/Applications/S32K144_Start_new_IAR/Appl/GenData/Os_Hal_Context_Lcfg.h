@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Hal_Context_Lcfg.h
- *   Generation Time: 2026-01-02 06:52:31
+ *   Generation Time: 2026-01-08 04:29:13
  *           Project: S32K144_Start - Version 1.0
  *          Delivery: CBD1800257_D01
  *      Tool Version: DaVinci Configurator  5.18.37 SP1
@@ -108,6 +108,18 @@ extern VAR(Os_Hal_ContextType, OS_VAR_NOINIT) OsCfg_Hal_Context_OsTask_APP_Dyn;
 extern VAR(Os_Hal_ContextType, OS_VAR_NOINIT) OsCfg_Hal_Context_OsTask_BSW_SCHM_Dyn;
 
 
+/*! HAL dynamic task context data: OsTask_CPULoad_1S */
+extern VAR(Os_Hal_ContextType, OS_VAR_NOINIT) OsCfg_Hal_Context_OsTask_CPULoad_1S_Dyn;
+
+
+/*! HAL dynamic task context data: OsTask_EMC_PWL_CCC */
+extern VAR(Os_Hal_ContextType, OS_VAR_NOINIT) OsCfg_Hal_Context_OsTask_EMC_PWL_CCC_Dyn;
+
+
+/*! HAL dynamic task context data: OsTask_LOCK_100ms */
+extern VAR(Os_Hal_ContextType, OS_VAR_NOINIT) OsCfg_Hal_Context_OsTask_LOCK_100ms_Dyn;
+
+
 /*! HAL exception context data: OsCore0 */
 extern VAR(Os_ExceptionContextType, OS_VAR_NOINIT) OsCfg_Hal_Context_OsCore0_ExceptionContext;
 
@@ -157,6 +169,15 @@ extern CONST(Os_Hal_ContextConfigType, OS_CONST) OsCfg_Hal_Context_OsTask_APP;
 
 /*! HAL task context configuration data: OsTask_BSW_SCHM */
 extern CONST(Os_Hal_ContextConfigType, OS_CONST) OsCfg_Hal_Context_OsTask_BSW_SCHM;
+
+/*! HAL task context configuration data: OsTask_CPULoad_1S */
+extern CONST(Os_Hal_ContextConfigType, OS_CONST) OsCfg_Hal_Context_OsTask_CPULoad_1S;
+
+/*! HAL task context configuration data: OsTask_EMC_PWL_CCC */
+extern CONST(Os_Hal_ContextConfigType, OS_CONST) OsCfg_Hal_Context_OsTask_EMC_PWL_CCC;
+
+/*! HAL task context configuration data: OsTask_LOCK_100ms */
+extern CONST(Os_Hal_ContextConfigType, OS_CONST) OsCfg_Hal_Context_OsTask_LOCK_100ms;
 
 /*! HAL kernel stack configuration data: OsCore0_Kernel */
 extern CONST(Os_Hal_ContextStackConfigType, OS_CONST) OsCfg_Hal_Stack_OsCore0_Kernel;

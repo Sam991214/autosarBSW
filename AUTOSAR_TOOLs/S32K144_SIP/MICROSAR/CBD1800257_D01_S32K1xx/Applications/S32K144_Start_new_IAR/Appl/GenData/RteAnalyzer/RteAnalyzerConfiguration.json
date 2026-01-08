@@ -984,6 +984,26 @@
             "Source",
             "..",
             "../Components",
+            "../Components/CCC_expand"
+         ],
+         "SourceFile" : "Source/CCC_expand.c"
+      },
+      {
+         "IncludeDirectoryList" : [
+            "D:/study/autosar_bsw/AUTOSAR_TOOLs/S32K144_SIP/MICROSAR/CBD1800257_D01_S32K1xx/Misc/RteAnalyzer/include",
+            "Source",
+            "..",
+            "../Components",
+            "../Components/TSC_CCC_expand"
+         ],
+         "SourceFile" : "Source/TSC_CCC_expand.c"
+      },
+      {
+         "IncludeDirectoryList" : [
+            "D:/study/autosar_bsw/AUTOSAR_TOOLs/S32K144_SIP/MICROSAR/CBD1800257_D01_S32K1xx/Misc/RteAnalyzer/include",
+            "Source",
+            "..",
+            "../Components",
             "../Components/CddSbc"
          ],
          "SourceFile" : "Source/CddSbc.c"
@@ -1027,6 +1047,26 @@
             "../Components/TSC_CtLedTask"
          ],
          "SourceFile" : "Source/TSC_CtLedTask.c"
+      },
+      {
+         "IncludeDirectoryList" : [
+            "D:/study/autosar_bsw/AUTOSAR_TOOLs/S32K144_SIP/MICROSAR/CBD1800257_D01_S32K1xx/Misc/RteAnalyzer/include",
+            "Source",
+            "..",
+            "../Components",
+            "../Components/CPUload_basic"
+         ],
+         "SourceFile" : "Source/CPUload_basic.c"
+      },
+      {
+         "IncludeDirectoryList" : [
+            "D:/study/autosar_bsw/AUTOSAR_TOOLs/S32K144_SIP/MICROSAR/CBD1800257_D01_S32K1xx/Misc/RteAnalyzer/include",
+            "Source",
+            "..",
+            "../Components",
+            "../Components/TSC_CPUload_basic"
+         ],
+         "SourceFile" : "Source/TSC_CPUload_basic.c"
       },
       {
          "IncludeDirectoryList" : [
@@ -1104,6 +1144,46 @@
             "Source",
             "..",
             "../Components",
+            "../Components/EMC_expand"
+         ],
+         "SourceFile" : "Source/EMC_expand.c"
+      },
+      {
+         "IncludeDirectoryList" : [
+            "D:/study/autosar_bsw/AUTOSAR_TOOLs/S32K144_SIP/MICROSAR/CBD1800257_D01_S32K1xx/Misc/RteAnalyzer/include",
+            "Source",
+            "..",
+            "../Components",
+            "../Components/TSC_EMC_expand"
+         ],
+         "SourceFile" : "Source/TSC_EMC_expand.c"
+      },
+      {
+         "IncludeDirectoryList" : [
+            "D:/study/autosar_bsw/AUTOSAR_TOOLs/S32K144_SIP/MICROSAR/CBD1800257_D01_S32K1xx/Misc/RteAnalyzer/include",
+            "Source",
+            "..",
+            "../Components",
+            "../Components/LOCK_basic"
+         ],
+         "SourceFile" : "Source/LOCK_basic.c"
+      },
+      {
+         "IncludeDirectoryList" : [
+            "D:/study/autosar_bsw/AUTOSAR_TOOLs/S32K144_SIP/MICROSAR/CBD1800257_D01_S32K1xx/Misc/RteAnalyzer/include",
+            "Source",
+            "..",
+            "../Components",
+            "../Components/TSC_LOCK_basic"
+         ],
+         "SourceFile" : "Source/TSC_LOCK_basic.c"
+      },
+      {
+         "IncludeDirectoryList" : [
+            "D:/study/autosar_bsw/AUTOSAR_TOOLs/S32K144_SIP/MICROSAR/CBD1800257_D01_S32K1xx/Misc/RteAnalyzer/include",
+            "Source",
+            "..",
+            "../Components",
             "../Components/Os_OsCore0_swc"
          ],
          "SourceFile" : "Source/Os_OsCore0_swc.c"
@@ -1117,6 +1197,26 @@
             "../Components/TSC_Os_OsCore0_swc"
          ],
          "SourceFile" : "Source/TSC_Os_OsCore0_swc.c"
+      },
+      {
+         "IncludeDirectoryList" : [
+            "D:/study/autosar_bsw/AUTOSAR_TOOLs/S32K144_SIP/MICROSAR/CBD1800257_D01_S32K1xx/Misc/RteAnalyzer/include",
+            "Source",
+            "..",
+            "../Components",
+            "../Components/PWL_expand"
+         ],
+         "SourceFile" : "Source/PWL_expand.c"
+      },
+      {
+         "IncludeDirectoryList" : [
+            "D:/study/autosar_bsw/AUTOSAR_TOOLs/S32K144_SIP/MICROSAR/CBD1800257_D01_S32K1xx/Misc/RteAnalyzer/include",
+            "Source",
+            "..",
+            "../Components",
+            "../Components/TSC_PWL_expand"
+         ],
+         "SourceFile" : "Source/TSC_PWL_expand.c"
       },
       {
          "IncludeDirectoryList" : [
@@ -1183,6 +1283,24 @@
          "Preemptive" : "0",
          "Priority" : "10",
          "TaskName" : "OsTask_BSW_SCHM"
+      },
+      {
+         "OsApplication" : "",
+         "Preemptive" : "1",
+         "Priority" : "20",
+         "TaskName" : "OsTask_CPULoad_1S"
+      },
+      {
+         "OsApplication" : "",
+         "Preemptive" : "1",
+         "Priority" : "20",
+         "TaskName" : "OsTask_EMC_PWL_CCC"
+      },
+      {
+         "OsApplication" : "",
+         "Preemptive" : "1",
+         "Priority" : "25",
+         "TaskName" : "OsTask_LOCK_100ms"
       }
    ],
    "TemplateDataBaseDirectory" : "D:\\study\\autosar_bsw\\AUTOSAR_TOOLs\\S32K144_SIP\\MICROSAR\\CBD1800257_D01_S32K1xx\\Generators\\Rte"

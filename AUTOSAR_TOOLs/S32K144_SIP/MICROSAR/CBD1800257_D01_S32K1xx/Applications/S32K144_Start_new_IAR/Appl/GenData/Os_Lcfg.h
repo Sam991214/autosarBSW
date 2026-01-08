@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Lcfg.h
- *   Generation Time: 2026-01-02 06:52:31
+ *   Generation Time: 2026-01-08 04:29:13
  *           Project: S32K144_Start - Version 1.0
  *          Delivery: CBD1800257_D01
  *      Tool Version: DaVinci Configurator  5.18.37 SP1
@@ -109,6 +109,42 @@ extern FUNC(void, OS_OSTASK_APP_CODE) Os_Task_OsTask_APP(void);
 extern FUNC(void, OS_OSTASK_BSW_SCHM_CODE) Os_Task_OsTask_BSW_SCHM(void);
 
 # define OS_STOP_SEC_OsTask_BSW_SCHM_CODE
+# include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+
+# define OS_START_SEC_OsTask_CPULoad_1S_CODE
+# include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+/**********************************************************************************************************************
+ *  OsTask_CPULoad_1S()
+ *********************************************************************************************************************/
+extern FUNC(void, OS_OSTASK_CPULOAD_1S_CODE) Os_Task_OsTask_CPULoad_1S(void);
+
+# define OS_STOP_SEC_OsTask_CPULoad_1S_CODE
+# include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+
+# define OS_START_SEC_OsTask_EMC_PWL_CCC_CODE
+# include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+/**********************************************************************************************************************
+ *  OsTask_EMC_PWL_CCC()
+ *********************************************************************************************************************/
+extern FUNC(void, OS_OSTASK_EMC_PWL_CCC_CODE) Os_Task_OsTask_EMC_PWL_CCC(void);
+
+# define OS_STOP_SEC_OsTask_EMC_PWL_CCC_CODE
+# include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+
+# define OS_START_SEC_OsTask_LOCK_100ms_CODE
+# include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
+
+/**********************************************************************************************************************
+ *  OsTask_LOCK_100ms()
+ *********************************************************************************************************************/
+extern FUNC(void, OS_OSTASK_LOCK_100MS_CODE) Os_Task_OsTask_LOCK_100ms(void);
+
+# define OS_STOP_SEC_OsTask_LOCK_100ms_CODE
 # include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */
 
 

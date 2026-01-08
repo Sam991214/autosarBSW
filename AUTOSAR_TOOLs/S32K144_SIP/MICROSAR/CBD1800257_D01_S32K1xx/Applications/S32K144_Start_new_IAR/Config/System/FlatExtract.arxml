@@ -305,6 +305,86 @@
                                   </ANNOTATIONS>
                                   <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE">/ComponentTypes/Test_SWC2</TYPE-TREF>
                                 </SW-COMPONENT-PROTOTYPE>
+                                <SW-COMPONENT-PROTOTYPE UUID="8afe919d-9deb-4ac0-bf1e-6ca64128230c">
+                                  <SHORT-NAME>EMC</SHORT-NAME>
+                                  <ADMIN-DATA>
+                                    <SDGS>
+                                      <SDG GID="DV:DEV">
+                                        <SD GID="DV:ImportModePreset">Keep</SD>
+                                      </SDG>
+                                    </SDGS>
+                                  </ADMIN-DATA>
+                                  <ANNOTATIONS>
+                                    <ANNOTATION>
+                                      <ANNOTATION-ORIGIN>DV:Flattener</ANNOTATION-ORIGIN>
+                                    </ANNOTATION>
+                                  </ANNOTATIONS>
+                                  <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE">/ComponentTypes/EMC_expand</TYPE-TREF>
+                                </SW-COMPONENT-PROTOTYPE>
+                                <SW-COMPONENT-PROTOTYPE UUID="9fe6b5bf-4510-4de8-a34d-95c598771c9f">
+                                  <SHORT-NAME>PWL</SHORT-NAME>
+                                  <ADMIN-DATA>
+                                    <SDGS>
+                                      <SDG GID="DV:DEV">
+                                        <SD GID="DV:ImportModePreset">Keep</SD>
+                                      </SDG>
+                                    </SDGS>
+                                  </ADMIN-DATA>
+                                  <ANNOTATIONS>
+                                    <ANNOTATION>
+                                      <ANNOTATION-ORIGIN>DV:Flattener</ANNOTATION-ORIGIN>
+                                    </ANNOTATION>
+                                  </ANNOTATIONS>
+                                  <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE">/ComponentTypes/PWL_expand</TYPE-TREF>
+                                </SW-COMPONENT-PROTOTYPE>
+                                <SW-COMPONENT-PROTOTYPE UUID="29f46450-3c44-42ed-95bd-6df41e8e742b">
+                                  <SHORT-NAME>LOCK</SHORT-NAME>
+                                  <ADMIN-DATA>
+                                    <SDGS>
+                                      <SDG GID="DV:DEV">
+                                        <SD GID="DV:ImportModePreset">Keep</SD>
+                                      </SDG>
+                                    </SDGS>
+                                  </ADMIN-DATA>
+                                  <ANNOTATIONS>
+                                    <ANNOTATION>
+                                      <ANNOTATION-ORIGIN>DV:Flattener</ANNOTATION-ORIGIN>
+                                    </ANNOTATION>
+                                  </ANNOTATIONS>
+                                  <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE">/ComponentTypes/LOCK_basic</TYPE-TREF>
+                                </SW-COMPONENT-PROTOTYPE>
+                                <SW-COMPONENT-PROTOTYPE UUID="627bee2e-95e5-45b4-adab-c418bead018c">
+                                  <SHORT-NAME>CPULoad</SHORT-NAME>
+                                  <ADMIN-DATA>
+                                    <SDGS>
+                                      <SDG GID="DV:DEV">
+                                        <SD GID="DV:ImportModePreset">Keep</SD>
+                                      </SDG>
+                                    </SDGS>
+                                  </ADMIN-DATA>
+                                  <ANNOTATIONS>
+                                    <ANNOTATION>
+                                      <ANNOTATION-ORIGIN>DV:Flattener</ANNOTATION-ORIGIN>
+                                    </ANNOTATION>
+                                  </ANNOTATIONS>
+                                  <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE">/ComponentTypes/CPUload_basic</TYPE-TREF>
+                                </SW-COMPONENT-PROTOTYPE>
+                                <SW-COMPONENT-PROTOTYPE UUID="cf2073f5-eb21-4565-8e90-135ba773f7b6">
+                                  <SHORT-NAME>CCC</SHORT-NAME>
+                                  <ADMIN-DATA>
+                                    <SDGS>
+                                      <SDG GID="DV:DEV">
+                                        <SD GID="DV:ImportModePreset">Keep</SD>
+                                      </SDG>
+                                    </SDGS>
+                                  </ADMIN-DATA>
+                                  <ANNOTATIONS>
+                                    <ANNOTATION>
+                                      <ANNOTATION-ORIGIN>DV:Flattener</ANNOTATION-ORIGIN>
+                                    </ANNOTATION>
+                                  </ANNOTATIONS>
+                                  <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE">/ComponentTypes/CCC_expand</TYPE-TREF>
+                                </SW-COMPONENT-PROTOTYPE>
                               </COMPONENTS>
                               <CONNECTORS>
                                 <ASSEMBLY-SW-CONNECTOR UUID="b00a99bb-51bd-42bf-9edb-6ce6cee64494">
@@ -422,6 +502,8 @@
                                   <SDG GID="DV:CfgReferences">
                                     <SD GID="a5d88c2d-3a5f-4ddc-88fe-a529902aaf19">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE</SD>
                                     <SD GID="00965f10-bcb0-42ec-9d93-a14d19fa8bcc">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/BswM</SD>
+                                    <SD GID="cf2073f5-eb21-4565-8e90-135ba773f7b6">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/CCC</SD>
+                                    <SD GID="627bee2e-95e5-45b4-adab-c418bead018c">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/CPULoad</SD>
                                     <SD GID="6cd128d2-d8e8-4bf6-b225-9ee91090c0af">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Cdd_SBC_UJA1169</SD>
                                     <SD GID="3ea1e045-f9c3-479c-89f6-52cf0f001a07">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/ComM</SD>
                                     <SD GID="65d07982-b450-4fc8-97f7-fcf23ca69a48">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/CpLedTask</SD>
@@ -429,13 +511,22 @@
                                     <SD GID="9eaf53f7-3616-4d1b-b896-a10e18024eef">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/DemMaster_0</SD>
                                     <SD GID="1ac7f398-194e-47c2-82ae-c24b63702466">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/DemSatellite_0</SD>
                                     <SD GID="e70ffa2b-4664-430f-abdb-4549bd94b2ce">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Det</SD>
+                                    <SD GID="8afe919d-9deb-4ac0-bf1e-6ca64128230c">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/EMC</SD>
                                     <SD GID="e6a62773-e3a5-47b2-ac93-080798d10a07">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/EcuM</SD>
+                                    <SD GID="29f46450-3c44-42ed-95bd-6df41e8e742b">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/LOCK</SD>
                                     <SD GID="27952c58-181a-42e9-9aa1-510d43a8b269">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Os_OsCore0_swc</SD>
+                                    <SD GID="9fe6b5bf-4510-4de8-a34d-95c598771c9f">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/PWL</SD>
                                     <SD GID="fcd435b3-7707-44af-8a7f-9fd00d7402a9">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Test2_SWC</SD>
                                     <SD GID="5f5652de-fad8-4eac-a184-bda2107c9d6a">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Test_SWC</SD>
                                     <SD GID="6090f47b-22ac-4e45-8807-2cfb3df63612">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/FLATMAP</SD>
                                     <SD GID="67562945-d323-4eaf-8493-8ce12755f932">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM</SD>
                                     <SD GID="a6157773-9fa7-4c61-9e7b-e7e2c3fd7bdf">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</SD>
+                                    <SD GID="7BEF2713-BC35-45E9-9E52-B9DC24CA4710">/ComponentTypes/CCC_expand</SD>
+                                    <SD GID="6C3FEE75-3312-46C5-AC8D-46BD4C8714CB">/ComponentTypes/CCC_expand/CCC_expand_InternalBehavior/TMT_CCC_expand_Runnable_2S</SD>
+                                    <SD GID="8287EF50-F7DC-4944-A204-B4CC9B4804DE">/ComponentTypes/CCC_expand_Implementation</SD>
+                                    <SD GID="76D076B7-70F9-4FBF-904B-E7AAB058B1E6">/ComponentTypes/CPUload_basic</SD>
+                                    <SD GID="67CAD92C-BB3F-4CF9-B5E9-23C63048C7AD">/ComponentTypes/CPUload_basic/CPUload_basic_InternalBehavior/TMT_CPUload_basic_Runnable_1S</SD>
+                                    <SD GID="3464E03A-BCCC-466B-8654-89016A041BBD">/ComponentTypes/CPUload_basic_Implementation</SD>
                                     <SD GID="87444BF0-820B-4F71-B55C-57CE73D58CE6">/ComponentTypes/CddSbc</SD>
                                     <SD GID="03328975-2907-4C5B-8945-E3FB77C2EE1C">/ComponentTypes/CddSbc/CddSbc_InternalBehavior/TMT_Sbc_Test_Runnable</SD>
                                     <SD GID="B67AB846-16CD-45AA-BF67-FC18835F7E19">/ComponentTypes/CddSbc_Implementation</SD>
@@ -449,6 +540,15 @@
                                     <SD GID="0B0CD614-3623-4321-9FC0-B582A49E4655">/ComponentTypes/CtLedTask/lwt_develop_RearLeftWinPos</SD>
                                     <SD GID="4D2285DB-A770-4492-B237-32DC6939ED30">/ComponentTypes/CtLedTask/lwt_develop_RearRightWinPos</SD>
                                     <SD GID="2EB878D9-8957-4976-A7ED-B631951289EF">/ComponentTypes/CtLedTask_Implementation</SD>
+                                    <SD GID="6DF9D009-1C9E-46CD-B3BB-3AD15D291927">/ComponentTypes/EMC_expand</SD>
+                                    <SD GID="67FAD3BF-71EF-44EB-99CA-B254CD94B273">/ComponentTypes/EMC_expand/EMC_expand_InternalBehavior/TMT_EMC_expand_Runnable_10ms</SD>
+                                    <SD GID="196040B7-1CFE-44A2-9F16-7CB763468176">/ComponentTypes/EMC_expand_Implementation</SD>
+                                    <SD GID="0F81CDA1-5FCC-4FE1-90D4-D8A8AEA669DA">/ComponentTypes/LOCK_basic</SD>
+                                    <SD GID="53A02184-8FFE-4A87-BB36-1216325A5790">/ComponentTypes/LOCK_basic/LOCK_basic_InternalBehavior/TMT_LOCK_basic_Runnable</SD>
+                                    <SD GID="F840FF4F-BCC1-48CA-9EF9-4CD17F7B35F1">/ComponentTypes/LOCK_basic_Implementation</SD>
+                                    <SD GID="72A93058-A6CD-4A40-ADDC-81BA64841350">/ComponentTypes/PWL_expand</SD>
+                                    <SD GID="A696CCD8-06A5-4C03-8AC4-817D5866F961">/ComponentTypes/PWL_expand/PWL_expand_InternalBehavior/TMT_PWL_expand_Runnable_20ms</SD>
+                                    <SD GID="5E70D40A-9F21-42F0-8055-1A04BE4CFE71">/ComponentTypes/PWL_expand_Implementation</SD>
                                     <SD GID="21B0D6BF-BBA2-4960-BEEB-90AE467FBEE3">/ComponentTypes/Test_SWC</SD>
                                     <SD GID="B5506A87-0097-4774-B74B-5654458B1E93">/ComponentTypes/Test_SWC/Test_SWC_InternalBehavior/OIT_Test_SWC_Service_Operation_lwt_Test_SWC_Service_Operation_lwt</SD>
                                     <SD GID="50194AD6-961A-463B-BBA1-3B4C2DE3FEE2">/ComponentTypes/Test_SWC/Test_SWC_InternalBehavior/TMT_Test_SWC_Main</SD>
@@ -472,8 +572,13 @@
                                     <SD GID="794032D5-9183-46E1-B5C7-E94311CD270B">/DataType/boolean</SD>
                                     <SD GID="46675FC7-2690-4535-93CC-759760D7AD06">/DataType/uint8</SD>
                                     <SD GID="FD22F03B-8D66-4CBA-A825-9E3899E072AF">/ECUCompositionTypes/ECU_Composition</SD>
+                                    <SD GID="5AA90BD6-B3C7-4C0B-A550-C54648F1C21F">/ECUCompositionTypes/ECU_Composition/CCC</SD>
+                                    <SD GID="D6A36DA5-C330-4791-B41A-9EC597A418E2">/ECUCompositionTypes/ECU_Composition/CPULoad</SD>
                                     <SD GID="F0764082-4F63-4CC5-8ADC-DB14FF6B95F7">/ECUCompositionTypes/ECU_Composition/Cdd_SBC_UJA1169</SD>
                                     <SD GID="6E3B8BA0-A77C-4C85-B120-56B689E415B9">/ECUCompositionTypes/ECU_Composition/CpLedTask</SD>
+                                    <SD GID="279DFF8E-AE3B-4CC7-9950-409894F13FD8">/ECUCompositionTypes/ECU_Composition/EMC</SD>
+                                    <SD GID="DFFA5D39-A6F0-4508-BEF8-08C55F0B32C6">/ECUCompositionTypes/ECU_Composition/LOCK</SD>
+                                    <SD GID="33A6F8ED-92C4-4FAF-8E58-5BE7EB92A060">/ECUCompositionTypes/ECU_Composition/PWL</SD>
                                     <SD GID="087567DC-2295-40D4-92FA-76122FC44FF6">/ECUCompositionTypes/ECU_Composition/Test2_SWC</SD>
                                     <SD GID="1A3592E9-ED9C-48C2-A930-A705186EAC74">/ECUCompositionTypes/ECU_Composition/Test_SWC</SD>
                                     <SD GID="a43e81d2-d27b-4c23-b29d-7f51d7c5996c">/MICROSAR/BswM_ib_bswmd/BswModuleDescriptions/BswM/BswMBehavior</SD>
@@ -886,6 +991,8 @@
                                     <SD GID="68461140-188a-4c45-83a7-70ca57fa3179">/MICROSAR/PduR_ib_bswmd/BswModuleDescriptions/PduR/PduRBehavior</SD>
                                     <SD GID="4aa6ce32-73aa-4583-b712-41915cb75b92">/MICROSAR/PduR_ib_bswmd/BswModuleDescriptions/PduR/PduRBehavior/PDUR_EXCLUSIVE_AREA_0</SD>
                                     <SD GID="e6883765-27bb-40c8-b767-748b9c7ee1a1">/MICROSAR/Rte_ib_bswmd/BswModuleDescriptions/Rte/RteBehavior</SD>
+                                    <SD GID="788c0e51-9a2b-4ab6-a454-75a1c9cb1f57">/MICROSAR/Rte_ib_bswmd/BswModuleDescriptions/Rte/RteBehavior/Rte_ComSendSignalProxyPeriodic</SD>
+                                    <SD GID="ad377d1b-5aff-46b6-9737-2d34c324be13">/MICROSAR/Rte_ib_bswmd/BswModuleDescriptions/Rte/RteBehavior/Rte_ComSendSignalProxyPeriodicTimingEvent0</SD>
                                     <SD GID="b98f5eaa-a922-4fe9-8f50-29a6af23f979">/MICROSAR/Rte_ib_bswmd/BswModuleDescriptions/Rte_ComSendSignalProxyPeriodic</SD>
                                     <SD GID="BB3A8F22-FC49-4180-AEE4-2900EA9F4366">/PortInterfaces/lwt_Lampcnt/u8_lwt_Signal</SD>
                                     <SD GID="DC3991F5-FE7E-493E-8A03-03B724B68D05">/PortInterfaces/lwt_RearInterLight/Bool_lwtSignal</SD>

@@ -33,4 +33,24 @@
 		<ARXML>ComponentTypes/Test_SWC2.arxml</ARXML>
 		<DVG>ComponentTypes/Test_SWC2.dvg</DVG>
 	</FILEREF>
+	<FILEREF>
+		<ARXML>ComponentTypes/EMC_expand.arxml</ARXML>
+		<DVG>ComponentTypes/EMC_expand.dvg</DVG>
+	</FILEREF>
+	<FILEREF>
+		<ARXML>ComponentTypes/PWL_expand.arxml</ARXML>
+		<DVG>ComponentTypes/PWL_expand.dvg</DVG>
+	</FILEREF>
+	<FILEREF>
+		<ARXML>ComponentTypes/LOCK_basic.arxml</ARXML>
+		<DVG>ComponentTypes/LOCK_basic.dvg</DVG>
+	</FILEREF>
+	<FILEREF>
+		<ARXML>ComponentTypes/CPUload_basic.arxml</ARXML>
+		<DVG>ComponentTypes/CPUload_basic.dvg</DVG>
+	</FILEREF>
+	<FILEREF>
+		<ARXML>ComponentTypes/CCC_expand.arxml</ARXML>
+		<DVG>ComponentTypes/CCC_expand.dvg</DVG>
+	</FILEREF>
 </DCF>

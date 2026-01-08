@@ -79,6 +79,10 @@
  *  Rte_ReadHook_Test_SWC_lwt_Test_Swc_Read_u8_Signal_lwt_Start
  *  Rte_Runnable_BswM_BswM_MainFunction_Return
  *  Rte_Runnable_BswM_BswM_MainFunction_Start
+ *  Rte_Runnable_CCC_expand_CCC_expand_Runnable_2S_Return
+ *  Rte_Runnable_CCC_expand_CCC_expand_Runnable_2S_Start
+ *  Rte_Runnable_CPUload_basic_CPUload_basic_Runnable_1S_Return
+ *  Rte_Runnable_CPUload_basic_CPUload_basic_Runnable_1S_Start
  *  Rte_Runnable_CddSbc_Sbc_Test_Runnable_Return
  *  Rte_Runnable_CddSbc_Sbc_Test_Runnable_Start
  *  Rte_Runnable_ComM_ComM_MainFunction_0_Return
@@ -197,6 +201,8 @@
  *  Rte_Runnable_Det_ReportError_Start
  *  Rte_Runnable_Det_ReportRuntimeError_Return
  *  Rte_Runnable_Det_ReportRuntimeError_Start
+ *  Rte_Runnable_EMC_expand_EMC_expand_Runnable_10ms_Return
+ *  Rte_Runnable_EMC_expand_EMC_expand_Runnable_10ms_Start
  *  Rte_Runnable_EcuM_EcuM_MainFunction_Return
  *  Rte_Runnable_EcuM_EcuM_MainFunction_Start
  *  Rte_Runnable_EcuM_GetBootTarget_Return
@@ -213,10 +219,14 @@
  *  Rte_Runnable_EcuM_SelectShutdownCause_Start
  *  Rte_Runnable_EcuM_SelectShutdownTarget_Return
  *  Rte_Runnable_EcuM_SelectShutdownTarget_Start
+ *  Rte_Runnable_LOCK_basic_LOCK_basic_Runnable_Return
+ *  Rte_Runnable_LOCK_basic_LOCK_basic_Runnable_Start
  *  Rte_Runnable_Os_OsCore0_swc_GetCounterValue_Return
  *  Rte_Runnable_Os_OsCore0_swc_GetCounterValue_Start
  *  Rte_Runnable_Os_OsCore0_swc_GetElapsedValue_Return
  *  Rte_Runnable_Os_OsCore0_swc_GetElapsedValue_Start
+ *  Rte_Runnable_PWL_expand_PWL_expand_Runnable_20ms_Return
+ *  Rte_Runnable_PWL_expand_PWL_expand_Runnable_20ms_Start
  *  Rte_Runnable_Test_SWC2_Test_SWC2_Init_Return
  *  Rte_Runnable_Test_SWC2_Test_SWC2_Init_Start
  *  Rte_Runnable_Test_SWC2_Test_SWC2_Main_Return

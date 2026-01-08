@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Types_Lcfg.h
- *   Generation Time: 2026-01-04 02:43:05
+ *   Generation Time: 2026-01-08 04:46:47
  *           Project: S32K144_Start - Version 1.0
  *          Delivery: CBD1800257_D01
  *      Tool Version: DaVinci Configurator  5.18.37 SP1
@@ -50,6 +50,7 @@
  *********************************************************************************************************************/
 
 /* OS-Application identifiers. */
+#define OsApplication_CPUMonitor OsApplication_CPUMonitor
 #define SystemApplication_OsCore0 SystemApplication_OsCore0
 
 /* Trusted function identifiers. */
@@ -63,6 +64,9 @@
 #define IdleTask_OsCore0 IdleTask_OsCore0
 #define OsTask_APP OsTask_APP
 #define OsTask_BSW_SCHM OsTask_BSW_SCHM
+#define OsTask_CPULoad_1S OsTask_CPULoad_1S
+#define OsTask_EMC_PWL_CCC OsTask_EMC_PWL_CCC
+#define OsTask_LOCK_100ms OsTask_LOCK_100ms
 
 /* Category 2 ISR identifiers. */
 #define Adc_ConvertGroup0_lwt Adc_ConvertGroup0_lwt
@@ -75,10 +79,15 @@
 /* Alarm identifiers. */
 #define Rte_Al_TE2_OsTask_BSW_SCHM_0_10ms Rte_Al_TE2_OsTask_BSW_SCHM_0_10ms
 #define Rte_Al_TE2_OsTask_BSW_SCHM_0_20ms Rte_Al_TE2_OsTask_BSW_SCHM_0_20ms
+#define Rte_Al_TE_CCC_CCC_expand_Runnable_2S Rte_Al_TE_CCC_CCC_expand_Runnable_2S
+#define Rte_Al_TE_CPULoad_CPUload_basic_Runnable_1S Rte_Al_TE_CPULoad_CPUload_basic_Runnable_1S
 #define Rte_Al_TE_CanTp_CanTp_MainFunction Rte_Al_TE_CanTp_CanTp_MainFunction
 #define Rte_Al_TE_Cdd_SBC_UJA1169_Sbc_Test_Runnable Rte_Al_TE_Cdd_SBC_UJA1169_Sbc_Test_Runnable
 #define Rte_Al_TE_CpLedTask_LedRunnable Rte_Al_TE_CpLedTask_LedRunnable
+#define Rte_Al_TE_EMC_EMC_expand_Runnable_10ms Rte_Al_TE_EMC_EMC_expand_Runnable_10ms
+#define Rte_Al_TE_LOCK_LOCK_basic_Runnable Rte_Al_TE_LOCK_LOCK_basic_Runnable
 #define Rte_Al_TE_OsTask_APP_0_50ms Rte_Al_TE_OsTask_APP_0_50ms
+#define Rte_Al_TE_PWL_PWL_expand_Runnable_20ms Rte_Al_TE_PWL_PWL_expand_Runnable_20ms
 
 /* Counter identifiers. */
 #define SystemTimer SystemTimer
@@ -109,8 +118,9 @@
 /*! OS-Application identifiers. */
 typedef enum
 {
-  SystemApplication_OsCore0 = 0, /* 0x00000001 */
-  OS_APPID_COUNT = 1,
+  OsApplication_CPUMonitor = 0, /* 0x00000001 */
+  SystemApplication_OsCore0 = 1, /* 0x00000002 */
+  OS_APPID_COUNT = 2,
   INVALID_OSAPPLICATION = OS_APPID_COUNT
 } ApplicationType;
 
@@ -139,7 +149,10 @@ typedef enum
   IdleTask_OsCore0 = 1,
   OsTask_APP = 2,
   OsTask_BSW_SCHM = 3,
-  OS_TASKID_COUNT = 4,
+  OsTask_CPULoad_1S = 4,
+  OsTask_EMC_PWL_CCC = 5,
+  OsTask_LOCK_100ms = 6,
+  OS_TASKID_COUNT = 7,
   INVALID_TASK = OS_TASKID_COUNT
 } TaskType;
 
@@ -161,11 +174,16 @@ typedef enum
 {
   Rte_Al_TE2_OsTask_BSW_SCHM_0_10ms = 0,
   Rte_Al_TE2_OsTask_BSW_SCHM_0_20ms = 1,
-  Rte_Al_TE_CanTp_CanTp_MainFunction = 2,
-  Rte_Al_TE_Cdd_SBC_UJA1169_Sbc_Test_Runnable = 3,
-  Rte_Al_TE_CpLedTask_LedRunnable = 4,
-  Rte_Al_TE_OsTask_APP_0_50ms = 5,
-  OS_ALARMID_COUNT = 6
+  Rte_Al_TE_CCC_CCC_expand_Runnable_2S = 2,
+  Rte_Al_TE_CPULoad_CPUload_basic_Runnable_1S = 3,
+  Rte_Al_TE_CanTp_CanTp_MainFunction = 4,
+  Rte_Al_TE_Cdd_SBC_UJA1169_Sbc_Test_Runnable = 5,
+  Rte_Al_TE_CpLedTask_LedRunnable = 6,
+  Rte_Al_TE_EMC_EMC_expand_Runnable_10ms = 7,
+  Rte_Al_TE_LOCK_LOCK_basic_Runnable = 8,
+  Rte_Al_TE_OsTask_APP_0_50ms = 9,
+  Rte_Al_TE_PWL_PWL_expand_Runnable_20ms = 10,
+  OS_ALARMID_COUNT = 11
 } AlarmType;
 
 /*! Counter identifiers. */

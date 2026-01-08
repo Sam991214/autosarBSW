@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Alarm_Lcfg.h
- *   Generation Time: 2026-01-04 02:43:04
+ *   Generation Time: 2026-01-08 04:46:47
  *           Project: S32K144_Start - Version 1.0
  *          Delivery: CBD1800257_D01
  *      Tool Version: DaVinci Configurator  5.18.37 SP1
@@ -77,6 +77,12 @@ extern CONST(Os_AlarmSetEventConfigType, OS_CONST) OsCfg_Alarm_Rte_Al_TE2_OsTask
 /*! Alarm configuration data: Rte_Al_TE2_OsTask_BSW_SCHM_0_20ms */
 extern CONST(Os_AlarmSetEventConfigType, OS_CONST) OsCfg_Alarm_Rte_Al_TE2_OsTask_BSW_SCHM_0_20ms;
 
+/*! Alarm configuration data: Rte_Al_TE_CCC_CCC_expand_Runnable_2S */
+extern CONST(Os_AlarmSetEventConfigType, OS_CONST) OsCfg_Alarm_Rte_Al_TE_CCC_CCC_expand_Runnable_2S;
+
+/*! Alarm configuration data: Rte_Al_TE_CPULoad_CPUload_basic_Runnable_1S */
+extern CONST(Os_AlarmActivateTaskConfigType, OS_CONST) OsCfg_Alarm_Rte_Al_TE_CPULoad_CPUload_basic_Runnable_1S;
+
 /*! Alarm configuration data: Rte_Al_TE_CanTp_CanTp_MainFunction */
 extern CONST(Os_AlarmSetEventConfigType, OS_CONST) OsCfg_Alarm_Rte_Al_TE_CanTp_CanTp_MainFunction;
 
@@ -86,8 +92,17 @@ extern CONST(Os_AlarmSetEventConfigType, OS_CONST) OsCfg_Alarm_Rte_Al_TE_Cdd_SBC
 /*! Alarm configuration data: Rte_Al_TE_CpLedTask_LedRunnable */
 extern CONST(Os_AlarmSetEventConfigType, OS_CONST) OsCfg_Alarm_Rte_Al_TE_CpLedTask_LedRunnable;
 
+/*! Alarm configuration data: Rte_Al_TE_EMC_EMC_expand_Runnable_10ms */
+extern CONST(Os_AlarmSetEventConfigType, OS_CONST) OsCfg_Alarm_Rte_Al_TE_EMC_EMC_expand_Runnable_10ms;
+
+/*! Alarm configuration data: Rte_Al_TE_LOCK_LOCK_basic_Runnable */
+extern CONST(Os_AlarmActivateTaskConfigType, OS_CONST) OsCfg_Alarm_Rte_Al_TE_LOCK_LOCK_basic_Runnable;
+
 /*! Alarm configuration data: Rte_Al_TE_OsTask_APP_0_50ms */
 extern CONST(Os_AlarmSetEventConfigType, OS_CONST) OsCfg_Alarm_Rte_Al_TE_OsTask_APP_0_50ms;
+
+/*! Alarm configuration data: Rte_Al_TE_PWL_PWL_expand_Runnable_20ms */
+extern CONST(Os_AlarmSetEventConfigType, OS_CONST) OsCfg_Alarm_Rte_Al_TE_PWL_PWL_expand_Runnable_20ms;
 
 # define OS_STOP_SEC_CORE0_CONST_UNSPECIFIED
 # include "Os_MemMap_OsSections.h" /* PRQA S 5087 */ /* MD_MSR_19.1 */

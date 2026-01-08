@@ -292,5 +292,11 @@
         <Component Name="CddSbc" GenerationEnabled="true"/>
         <Component Name="Test_SWC" GenerationEnabled="true"/>
         <Component Name="Test2_SWC" GenerationEnabled="true"/>
+        <Component Name="Test_SWC2" GenerationEnabled="true"/>
+        <Component Name="EMC" GenerationEnabled="true"/>
+        <Component Name="PWL" GenerationEnabled="true"/>
+        <Component Name="LOCK" GenerationEnabled="true"/>
+        <Component Name="CPULoad" GenerationEnabled="true"/>
+        <Component Name="CCC" GenerationEnabled="true"/>
     </SwctGeneration>
 </ProjectAssistant>
